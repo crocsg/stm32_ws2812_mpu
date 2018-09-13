@@ -288,7 +288,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 static SD_MPU6050 mpu1;
 
-int period = 2000;
+int period = 2000 ;
 
 /**
   * @brief  EXTI line detection callbacks.
