@@ -286,8 +286,37 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-SD_MPU6050 mpu1;
+static SD_MPU6050 mpu1;
+
 int period = 2000;
+
+/**
+  * @brief  EXTI line detection callbacks.
+  * @param  GPIO_Pin: Specifies the pins connected EXTI line
+  * @retval None
+  */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  /* Prevent unused argument(s) compilation warning */
+
+  /* NOTE: This function Should not be modified, when the callback is needed,
+           the HAL_GPIO_EXTI_Callback could be implemented in the user file
+   */
+
+	if (GPIO_Pin == MPU_INTERUPT_Pin)
+	{
+
+		    //HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
+		//HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
+		//SD_MPU6050_ReadAccelerometer(&hi2c1,&mpu1);
+		//if (mpu1.Accelerometer_X < 0)
+		//	HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
+		//else
+		//	HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_SET);
+
+	}
+}
+
 /* USER CODE END 4 */
 
 /* StartDefaultTask function */
@@ -300,10 +329,7 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(period-30);
-    HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
-    osDelay(30);
-    HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_SET);
+
   }
   /* USER CODE END 5 */ 
 }
@@ -326,23 +352,24 @@ void StartTaskBlink(void const * argument)
   		  period=40;
   		  return;
   	 }
+  //SD_MPU6050_EnableInterrupts(&hi2c1, &mpu1);
 
   for(;;)
   {
 
-
+	  /*
 	  SD_MPU6050_ReadTemperature(&hi2c1,&mpu1);
-	  	  float temper = mpu1.Temperature;
-	  	  SD_MPU6050_ReadGyroscope(&hi2c1,&mpu1);
-	  	  int16_t g_x = mpu1.Gyroscope_X;
-	  	  int16_t g_y = mpu1.Gyroscope_Y;
-	  	  int16_t g_z = mpu1.Gyroscope_Z;
+	  	  	  float temper = mpu1.Temperature;
+	  	  	  SD_MPU6050_ReadGyroscope(&hi2c1,&mpu1);
+	  	  	  int16_t g_x = mpu1.Gyroscope_X;
+	  	  	  int16_t g_y = mpu1.Gyroscope_Y;
+	  	  	  int16_t g_z = mpu1.Gyroscope_Z;
 
-	  	  SD_MPU6050_ReadAccelerometer(&hi2c1,&mpu1);
-	  	  int16_t a_x = mpu1.Accelerometer_X;
-	  	  int16_t a_y = mpu1.Accelerometer_Y;
-	  	  int16_t a_z = mpu1.Accelerometer_Z;
-	  	  printf ("%d %d %d\n", a_x,a_y,a_z);
+	  	  	  SD_MPU6050_ReadAccelerometer(&hi2c1,&mpu1);
+	  	  	  int16_t a_x = mpu1.Accelerometer_X;
+	  	  	  int16_t a_y = mpu1.Accelerometer_Y;
+	  	  	  int16_t a_z = mpu1.Accelerometer_Z;
+	  	  	  printf ("%d %d %d\n", a_x,a_y,a_z);
 
 	  	  if (a_x > 1024)
 	  		  period = 500;
@@ -350,7 +377,10 @@ void StartTaskBlink(void const * argument)
 	  		period = 250;
 	  	  //else
 	  		//period = 5000;
-    osDelay(20);
+	  		 *
+	  		 */
+	printf ("Waiting data\n") ;
+    osDelay(250);
   }
   /* USER CODE END StartTaskBlink */
 }

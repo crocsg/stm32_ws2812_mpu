@@ -1,148 +1,148 @@
 Core/Src/main.o: ../Core/Src/main.c \
- I:/home/blackpill/led_mpu/Core/Inc/main.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
- I:/home/blackpill/led_mpu/Core/Inc/stm32f1xx_hal_conf.h \
- I:/home/blackpill/led_mpu/Core/Inc/main.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
- I:/home/blackpill/led_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h \
- I:/home/blackpill/led_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h \
- I:/home/blackpill/led_mpu/Drivers/CMSIS/Include/core_cm3.h \
- I:/home/blackpill/led_mpu/Drivers/CMSIS/Include/core_cmInstr.h \
- I:/home/blackpill/led_mpu/Drivers/CMSIS/Include/cmsis_gcc.h \
- I:/home/blackpill/led_mpu/Drivers/CMSIS/Include/core_cmFunc.h \
- I:/home/blackpill/led_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h \
- I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
- I:/home/blackpill/led_mpu/Core/Inc/FreeRTOSConfig.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
- I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- I:/home/blackpill/led_mpu/USB_DEVICE/usb_device.h \
- I:/home/blackpill/led_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- I:/home/blackpill/led_mpu/USB_DEVICE/usbd_conf.h \
- I:/home/blackpill/led_mpu/Core/Inc/sd_hal_mpu6050.h
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Core/Inc/stm32f1xx_hal_conf.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Include/core_cm3.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Include/core_cmInstr.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Include/cmsis_gcc.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Include/core_cmFunc.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Core/Inc/FreeRTOSConfig.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usb_device.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usbd_conf.h \
+ D:/usr/home/blackpill/stm32_ws2812_mpu/Core/Inc/sd_hal_mpu6050.h
 
-I:/home/blackpill/led_mpu/Core/Inc/main.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 
-I:/home/blackpill/led_mpu/Core/Inc/stm32f1xx_hal_conf.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Core/Inc/stm32f1xx_hal_conf.h:
 
-I:/home/blackpill/led_mpu/Core/Inc/main.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:
 
-I:/home/blackpill/led_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:
 
-I:/home/blackpill/led_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:
 
-I:/home/blackpill/led_mpu/Drivers/CMSIS/Include/core_cm3.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Include/core_cm3.h:
 
-I:/home/blackpill/led_mpu/Drivers/CMSIS/Include/core_cmInstr.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Include/core_cmInstr.h:
 
-I:/home/blackpill/led_mpu/Drivers/CMSIS/Include/cmsis_gcc.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Include/cmsis_gcc.h:
 
-I:/home/blackpill/led_mpu/Drivers/CMSIS/Include/core_cmFunc.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Include/core_cmFunc.h:
 
-I:/home/blackpill/led_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h:
 
-I:/home/blackpill/led_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 
-I:/home/blackpill/led_mpu/Core/Inc/FreeRTOSConfig.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Core/Inc/FreeRTOSConfig.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 
-I:/home/blackpill/led_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 
-I:/home/blackpill/led_mpu/USB_DEVICE/usb_device.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usb_device.h:
 
-I:/home/blackpill/led_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 
-I:/home/blackpill/led_mpu/USB_DEVICE/usbd_conf.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usbd_conf.h:
 
-I:/home/blackpill/led_mpu/Core/Inc/sd_hal_mpu6050.h:
+D:/usr/home/blackpill/stm32_ws2812_mpu/Core/Inc/sd_hal_mpu6050.h:
