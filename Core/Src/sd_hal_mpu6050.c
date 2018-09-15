@@ -116,6 +116,19 @@ SD_MPU6050_Result SD_MPU6050_Init(I2C_HandleTypeDef* I2Cx,SD_MPU6050* DataStruct
 				/* Return error */
 				return SD_MPU6050_Result_DeviceInvalid;
 		}
+		// stop MPU for reset
+		for (int i = 0; i < 5; i++)
+		{
+		    d[0] = MPU6050_PWR_MGMT_1;
+		    d[1] = 1<<7;
+			if(HAL_I2C_Master_Transmit(Handle,(uint16_t)address , (uint8_t *)d, 2, 1000) == HAL_OK)
+			{
+					break;
+			}
+			return SD_MPU6050_Result_Error;
+		}
+		HAL_Delay(50);
+
 	//------------------
 
 	/* Wakeup MPU6050 */
@@ -342,7 +355,8 @@ SD_MPU6050_Result SD_MPU6050_ReadAll(I2C_HandleTypeDef* I2Cx,SD_MPU6050* DataStr
 SD_MPU6050_Result SD_MPU6050_EnableInterrupts(I2C_HandleTypeDef* I2Cx,SD_MPU6050* DataStruct)
 {
 	uint8_t temp;
-	uint8_t reg[2] = {MPU6050_INT_ENABLE,0x21};
+	//uint8_t reg[2] = {MPU6050_INT_ENABLE,0x21};
+	uint8_t reg[2] = {MPU6050_INT_ENABLE,0x1};
 	I2C_HandleTypeDef* Handle = I2Cx;
 	uint8_t address = DataStruct->Address;
 
@@ -353,7 +367,8 @@ SD_MPU6050_Result SD_MPU6050_EnableInterrupts(I2C_HandleTypeDef* I2Cx,SD_MPU6050
 	/* Clear IRQ flag on any read operation */
 	while(HAL_I2C_Master_Transmit(Handle, (uint16_t)address, &mpu_reg, 1, 1000) != HAL_OK);
 
-	while(HAL_I2C_Master_Receive(Handle, (uint16_t)address, &temp, 14, 1000) != HAL_OK);
+	//while(HAL_I2C_Master_Receive(Handle, (uint16_t)address, &temp, 14, 1000) != HAL_OK);
+	while(HAL_I2C_Master_Receive(Handle, (uint16_t)address, &temp, 1, 1000) != HAL_OK);
 	temp |= 0x10;
 	reg[0] = MPU6050_INT_PIN_CFG;
 	reg[1] = temp;

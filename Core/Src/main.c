@@ -53,12 +53,17 @@
 #include "usb_device.h"
 
 /* USER CODE BEGIN Includes */
+#include <limits.h>
+
 #include "sd_hal_mpu6050.h"
+#include "mpu_data_handler.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
+DMA_HandleTypeDef hdma_i2c1_rx;
 
+DMA_HandleTypeDef hdma_memtomem_dma1_channel1;
 osThreadId defaultTaskHandle;
 osThreadId blinkTaskHandle;
 
@@ -70,6 +75,7 @@ osThreadId blinkTaskHandle;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_I2C1_Init(void);
 void StartDefaultTask(void const * argument);
 void StartTaskBlink(void const * argument);
@@ -80,7 +86,7 @@ void StartTaskBlink(void const * argument);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+void initialise_monitor_handles (void);
 /* USER CODE END 0 */
 
 /**
@@ -112,9 +118,10 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-  MX_USB_DEVICE_Init();
+
   printf("Starting:\r\n");
   /* USER CODE END 2 */
 
@@ -245,6 +252,37 @@ static void MX_I2C1_Init(void)
 
 }
 
+/** 
+  * Enable DMA controller clock
+  * Configure DMA for memory to memory transfers
+  *   hdma_memtomem_dma1_channel1
+  */
+static void MX_DMA_Init(void) 
+{
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* Configure DMA request hdma_memtomem_dma1_channel1 on DMA1_Channel1 */
+  hdma_memtomem_dma1_channel1.Instance = DMA1_Channel1;
+  hdma_memtomem_dma1_channel1.Init.Direction = DMA_MEMORY_TO_MEMORY;
+  hdma_memtomem_dma1_channel1.Init.PeriphInc = DMA_PINC_ENABLE;
+  hdma_memtomem_dma1_channel1.Init.MemInc = DMA_MINC_ENABLE;
+  hdma_memtomem_dma1_channel1.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+  hdma_memtomem_dma1_channel1.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+  hdma_memtomem_dma1_channel1.Init.Mode = DMA_NORMAL;
+  hdma_memtomem_dma1_channel1.Init.Priority = DMA_PRIORITY_LOW;
+  if (HAL_DMA_Init(&hdma_memtomem_dma1_channel1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  /* DMA interrupt init */
+  /* DMA1_Channel7_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel7_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel7_IRQn);
+
+}
+
 /** Configure pins as 
         * Analog 
         * Input 
@@ -305,14 +343,20 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 	if (GPIO_Pin == MPU_INTERUPT_Pin)
 	{
+		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+		uint32_t ulStatusRegister = 0;
 
-		    //HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
+		//HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
 		//HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
-		//SD_MPU6050_ReadAccelerometer(&hi2c1,&mpu1);
+		//
 		//if (mpu1.Accelerometer_X < 0)
 		//	HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
 		//else
 		//	HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_SET);
+		xTaskNotifyFromISR( blinkTaskHandle,
+		                        ulStatusRegister,
+		                        eSetBits,
+		                        &xHigherPriorityTaskWoken );
 
 	}
 }
@@ -338,25 +382,59 @@ void StartDefaultTask(void const * argument)
 void StartTaskBlink(void const * argument)
 {
   /* USER CODE BEGIN StartTaskBlink */
+  static mpu_data buffer[MPU_BUFFER_SIZE];
+  static int cnt = 0;
   /* Infinite loop */
   SD_MPU6050_Result result;
   printf("Starting:\r\n");
   result = SD_MPU6050_Init(&hi2c1,&mpu1,SD_MPU6050_Device_0,SD_MPU6050_Accelerometer_2G,SD_MPU6050_Gyroscope_250s );
-  	  if(result == SD_MPU6050_Result_Ok)
+  	  if(result != SD_MPU6050_Result_Ok)
   	  {
-  		  period=5000;
+  		  	  for (;;)
+			  {
+				  for (int t = 0; t < 4; t++)
+				  {
+					  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+					  osDelay(100);
+				  }
+				  osDelay(500);
+			  }
+			  return;
 
   	  }
-  	  else
-  	 {
-  		  period=40;
-  		  return;
-  	 }
-  //SD_MPU6050_EnableInterrupts(&hi2c1, &mpu1);
+
+
+  SD_MPU6050_EnableInterrupts(&hi2c1, &mpu1);
 
   for(;;)
   {
+	  uint32_t ulInterruptStatus;
 
+	  xTaskNotifyWait( 0x00,               /* Don't clear any bits on entry. */
+	                           ULONG_MAX,          /* Clear all bits on exit. */
+	                           &ulInterruptStatus, /* Receives the notification value. */
+	                           portMAX_DELAY );    /* Block indefinitely. */
+
+	  HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
+	  SD_MPU6050_ReadAll (&hi2c1, &mpu1);
+	  memmove (&buffer[1], &buffer[0], (MPU_BUFFER_SIZE - 1)*sizeof(buffer[0]));
+	  buffer[0].ax = mpu1.Accelerometer_X;
+	  buffer[0].ay = mpu1.Accelerometer_Y;
+	  buffer[0].az = mpu1.Accelerometer_Z;
+
+	  if (cnt < MPU_BUFFER_SIZE)
+		  cnt++;
+
+	  if (cnt > 2)
+	  {
+		  if (buffer[0].ax >= 0 && buffer[1].ax < 0)
+		  {
+			  printf ("%ld X change %d %d \n", HAL_GetTick(), buffer[0].ax, buffer[1].ax);
+			  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+		  }
+	  }
+
+	  //printf ("%d %d %d\n", buffer[0].ax, buffer[0].ay, buffer[0].az);
 	  /*
 	  SD_MPU6050_ReadTemperature(&hi2c1,&mpu1);
 	  	  	  float temper = mpu1.Temperature;
@@ -379,8 +457,8 @@ void StartTaskBlink(void const * argument)
 	  		//period = 5000;
 	  		 *
 	  		 */
-	printf ("Waiting data\n") ;
-    osDelay(250);
+	//printf ("Waiting data\n") ;
+    //osDelay(0);
   }
   /* USER CODE END StartTaskBlink */
 }
