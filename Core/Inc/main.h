@@ -64,6 +64,8 @@
 #define MPU_INTERUPT_Pin GPIO_PIN_15
 #define MPU_INTERUPT_GPIO_Port GPIOA
 #define MPU_INTERUPT_EXTI_IRQn EXTI15_10_IRQn
+#define MPU_ALIM_Pin GPIO_PIN_8
+#define MPU_ALIM_GPIO_Port GPIOB
 
 /* ########################## Assert Selection ############################## */
 /**

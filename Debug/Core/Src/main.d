@@ -22,6 +22,7 @@ Core/Src/main.o: ../Core/Src/main.c \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h \
@@ -48,7 +49,8 @@ Core/Src/main.o: ../Core/Src/main.c \
  I:/home/blackpill/stm32_ws2812_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usbd_conf.h \
  I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/sd_hal_mpu6050.h \
- I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mpu_data_handler.h
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mpu_data_handler.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ws2812spi.h
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h:
 
@@ -95,6 +97,8 @@ I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ha
 I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 
@@ -149,3 +153,5 @@ I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usbd_conf.h:
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/sd_hal_mpu6050.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mpu_data_handler.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ws2812spi.h:

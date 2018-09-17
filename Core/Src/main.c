@@ -57,11 +57,16 @@
 
 #include "sd_hal_mpu6050.h"
 #include "mpu_data_handler.h"
+#include "ws2812spi.h"
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
 DMA_HandleTypeDef hdma_i2c1_rx;
+
+SPI_HandleTypeDef hspi1;
+DMA_HandleTypeDef hdma_spi1_tx;
 
 DMA_HandleTypeDef hdma_memtomem_dma1_channel1;
 osThreadId defaultTaskHandle;
@@ -77,6 +82,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_I2C1_Init(void);
+static void MX_SPI1_Init(void);
 void StartDefaultTask(void const * argument);
 void StartTaskBlink(void const * argument);
 
@@ -97,7 +103,9 @@ void initialise_monitor_handles (void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+#ifdef _DEBUG
 	initialise_monitor_handles ();
+#endif
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -120,9 +128,12 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_I2C1_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
+	#ifdef _DEBUG
+  	  printf("Starting:\r\n");
+	#endif
 
-  printf("Starting:\r\n");
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -252,6 +263,30 @@ static void MX_I2C1_Init(void)
 
 }
 
+/* SPI1 init function */
+static void MX_SPI1_Init(void)
+{
+
+  /* SPI1 parameter configuration*/
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 10;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
 /** 
   * Enable DMA controller clock
   * Configure DMA for memory to memory transfers
@@ -277,6 +312,9 @@ static void MX_DMA_Init(void)
   }
 
   /* DMA interrupt init */
+  /* DMA1_Channel3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel3_IRQn);
   /* DMA1_Channel7_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Channel7_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel7_IRQn);
@@ -298,11 +336,14 @@ static void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(MPU_ALIM_GPIO_Port, MPU_ALIM_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : USERLED_Pin */
   GPIO_InitStruct.Pin = USERLED_Pin;
@@ -317,13 +358,22 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(MPU_INTERUPT_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : MPU_ALIM_Pin */
+  GPIO_InitStruct.Pin = MPU_ALIM_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(MPU_ALIM_GPIO_Port, &GPIO_InitStruct);
+
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 10, 0);
-  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+  //HAL_NVIC_EnableIRQ(EXTI15_10_IRQn); // disable interrupt until initialization finished
 
 }
 
 /* USER CODE BEGIN 4 */
+#define NB_PIXEL 8
+
 static SD_MPU6050 mpu1;
 
 int period = 2000 ;
@@ -373,7 +423,7 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-
+	  osDelay(250);
   }
   /* USER CODE END 5 */ 
 }
@@ -382,11 +432,22 @@ void StartDefaultTask(void const * argument)
 void StartTaskBlink(void const * argument)
 {
   /* USER CODE BEGIN StartTaskBlink */
+  static uint8_t ws_buffer[9*NB_PIXEL+1+9];
   static mpu_data buffer[MPU_BUFFER_SIZE];
   static int cnt = 0;
   /* Infinite loop */
   SD_MPU6050_Result result;
+#ifdef _DEBUG
   printf("Starting:\r\n");
+#endif
+
+  // put MPU ON (default GPIO MPU_ALIM = 0V
+  //HAL_GPIO_WritePin(MPU_ALIM_GPIO_Port, MPU_ALIM_Pin, GPIO_PIN_SET);
+  //osDelay (10000); // wait for MPU to start
+
+  memset (ws_buffer, 0, sizeof(ws_buffer)); // initialize pixel buffer
+
+  //HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
   result = SD_MPU6050_Init(&hi2c1,&mpu1,SD_MPU6050_Device_0,SD_MPU6050_Accelerometer_2G,SD_MPU6050_Gyroscope_250s );
   	  if(result != SD_MPU6050_Result_Ok)
   	  {
@@ -403,11 +464,16 @@ void StartTaskBlink(void const * argument)
 
   	  }
 
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 10, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
   SD_MPU6050_EnableInterrupts(&hi2c1, &mpu1);
-
+  int dir = 0;
+  int p = 4;
+  int waiter = 0;
   for(;;)
   {
+
 	  uint32_t ulInterruptStatus;
 
 	  xTaskNotifyWait( 0x00,               /* Don't clear any bits on entry. */
@@ -429,10 +495,66 @@ void StartTaskBlink(void const * argument)
 	  {
 		  if (buffer[0].ax >= 0 && buffer[1].ax < 0)
 		  {
+#ifdef _DEBUG
 			  printf ("%ld X change %d %d \n", HAL_GetTick(), buffer[0].ax, buffer[1].ax);
+#endif
+
 			  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 		  }
 	  }
+#ifdef _DEBUG
+	  printf ("%d %d %d\n", buffer[0].ax, buffer[0].ay, buffer[0].az);
+#endif
+
+
+	  for (int i = 0; i < NB_PIXEL; i++)
+	  {
+	  		  WS2812BSPI_encode_pixel(32,0,0, &ws_buffer[i * 9 + 1]);
+	  }
+	  dir = 0;
+	  if (buffer[0].ay > 2000)
+	  {
+		  for (int i = 0; i < NB_PIXEL / 2; i++)
+		  	  {
+		  	  		  WS2812BSPI_encode_pixel(64,16,0, &ws_buffer[i * 9 + 1]);
+		  	  }
+		  dir = +1;
+	  }
+	  else if (buffer[0].ay > 1000)
+	  {
+	  		  for (int i = 0; i < NB_PIXEL / 4; i++)
+	  		  	  {
+	  		  	  		  WS2812BSPI_encode_pixel(64,16,0, &ws_buffer[i * 9 + 1]);
+	  		  	  }
+
+	  }
+	  else if (buffer[0].ay < -2000)
+	  {
+		  for (int i = NB_PIXEL / 2; i < NB_PIXEL ; i++)
+		  		  	  {
+		  		  	  		  WS2812BSPI_encode_pixel(64,16,0, &ws_buffer[i * 9 + 1]);
+		  		  	  }
+		  dir = -1;
+	  }
+	  else if (buffer[0].ay < -1000)
+	  {
+		  for (int i = NB_PIXEL - NB_PIXEL / 4; i < NB_PIXEL ; i++)
+		  		  	  {
+		  		  	  		  WS2812BSPI_encode_pixel(64,16,0, &ws_buffer[i * 9 + 1]);
+		  		  	  }
+
+	  }
+
+	  if (waiter++ % 25 == 0)
+		  p += dir;
+	  if (p < 0)
+		  p = NB_PIXEL - 1;
+	  if (p > NB_PIXEL -1)
+		  p = 0;
+
+
+	  //WS2812BSPI_encode_pixel(255,0,0, &ws_buffer[p * 9 + 1]);
+	  HAL_SPI_Transmit(&hspi1, ws_buffer, sizeof(ws_buffer), 500);
 
 	  //printf ("%d %d %d\n", buffer[0].ax, buffer[0].ay, buffer[0].az);
 	  /*

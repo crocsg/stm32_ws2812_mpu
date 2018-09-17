@@ -11,7 +11,8 @@ C_SRCS += \
 ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Src/stm32f1xx_hal_timebase_TIM.c \
 ../Core/Src/stm32f1xx_it.c \
-../Core/Src/system_stm32f1xx.c 
+../Core/Src/system_stm32f1xx.c \
+../Core/Src/ws2812spi.c 
 
 OBJS += \
 ./Core/Src/freertos.o \
@@ -21,7 +22,8 @@ OBJS += \
 ./Core/Src/stm32f1xx_hal_msp.o \
 ./Core/Src/stm32f1xx_hal_timebase_TIM.o \
 ./Core/Src/stm32f1xx_it.o \
-./Core/Src/system_stm32f1xx.o 
+./Core/Src/system_stm32f1xx.o \
+./Core/Src/ws2812spi.o 
 
 C_DEPS += \
 ./Core/Src/freertos.d \
@@ -31,7 +33,8 @@ C_DEPS += \
 ./Core/Src/stm32f1xx_hal_msp.d \
 ./Core/Src/stm32f1xx_hal_timebase_TIM.d \
 ./Core/Src/stm32f1xx_it.d \
-./Core/Src/system_stm32f1xx.d 
+./Core/Src/system_stm32f1xx.d \
+./Core/Src/ws2812spi.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
