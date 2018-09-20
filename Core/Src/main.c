@@ -59,6 +59,7 @@
 #include "mpu_data_handler.h"
 #include "ws2812spi.h"
 
+#define _DEBUG 1
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -154,7 +155,7 @@ int main(void)
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of blinkTask */
-  osThreadDef(blinkTask, StartTaskBlink, osPriorityNormal, 0, 128);
+  osThreadDef(blinkTask, StartTaskBlink, osPriorityNormal, 0, 256);
   blinkTaskHandle = osThreadCreate(osThread(blinkTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -312,8 +313,11 @@ static void MX_DMA_Init(void)
   }
 
   /* DMA interrupt init */
+  /* DMA1_Channel1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 7, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
   /* DMA1_Channel3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 5, 0);
+  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 6, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel3_IRQn);
   /* DMA1_Channel7_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Channel7_IRQn, 5, 0);
@@ -342,9 +346,6 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(MPU_ALIM_GPIO_Port, MPU_ALIM_Pin, GPIO_PIN_RESET);
-
   /*Configure GPIO pin : USERLED_Pin */
   GPIO_InitStruct.Pin = USERLED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -358,23 +359,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(MPU_INTERUPT_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : MPU_ALIM_Pin */
-  GPIO_InitStruct.Pin = MPU_ALIM_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(MPU_ALIM_GPIO_Port, &GPIO_InitStruct);
-
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 10, 0);
-  //HAL_NVIC_EnableIRQ(EXTI15_10_IRQn); // disable interrupt until initialization finished
+  //HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 
 /* USER CODE BEGIN 4 */
-#define NB_PIXEL 8
-
 static SD_MPU6050 mpu1;
+static SD_MPU6050_Interrupt mpu1_interrupt;
+
 
 int period = 2000 ;
 
@@ -385,31 +379,47 @@ int period = 2000 ;
   */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  /* Prevent unused argument(s) compilation warning */
-
-  /* NOTE: This function Should not be modified, when the callback is needed,
-           the HAL_GPIO_EXTI_Callback could be implemented in the user file
-   */
-
-	if (GPIO_Pin == MPU_INTERUPT_Pin)
+ 	if (GPIO_Pin == MPU_INTERUPT_Pin)
 	{
 		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 		uint32_t ulStatusRegister = 0;
 
 		//HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
-		//HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
+		HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
 		//
 		//if (mpu1.Accelerometer_X < 0)
 		//	HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
 		//else
 		//	HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_SET);
-		xTaskNotifyFromISR( blinkTaskHandle,
+
+		// read interrupt status
+
+
+
+
+			xTaskNotifyFromISR( blinkTaskHandle,
 		                        ulStatusRegister,
 		                        eSetBits,
 		                        &xHigherPriorityTaskWoken );
 
+
 	}
 }
+
+void BlinkError ()
+{
+	for (;;) {
+		for (int t = 0; t < 4; t++) {
+			HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+			osDelay(100);
+		}
+		osDelay(500);
+	}
+}
+
+static mpu_data buffer[MPU_BUFFER_SIZE];
+static int cnt = 0;
+static uint32_t prevticks = 0;
 
 /* USER CODE END 4 */
 
@@ -420,10 +430,61 @@ void StartDefaultTask(void const * argument)
   MX_USB_DEVICE_Init();
 
   /* USER CODE BEGIN 5 */
+  if (WS2312BSPI_Init (&hspi1, &hdma_spi1_tx, NB_PIXEL) == -1)
+  	   {
+  	 	#ifdef _DEBUG
+  	 	  printf("WS2312BSPI_Init error:\r\n");
+  	 	#endif
+  	 	  BlinkError ();
+  	   }
+
   /* Infinite loop */
   for(;;)
   {
-	  osDelay(250);
+	  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+	  int dir;
+
+	  for (int i = 0; i < NB_PIXEL; i++)
+	  	  {
+	  	  		  WS2812BSPI_encode_pixel_index(32, 32, 0 , i);
+	  	  }
+	  	  dir = 0;
+	  #if 1
+	  	  if (buffer[0].ay > 2000)
+	  	  {
+	  		  for (int i = 0; i < NB_PIXEL / 2; i++)
+	  		  	  {
+	  		  	  		  WS2812BSPI_encode_pixel_index(64,16,0, i);
+	  		  	  }
+	  		  dir = +1;
+	  	  }
+	  	  else if (buffer[0].ay > 1000)
+	  	  {
+	  	  		  for (int i = 0; i < NB_PIXEL / 4; i++)
+	  	  		  	  {
+	  	  		  	  		  WS2812BSPI_encode_pixel_index (64,16,0, i);
+	  	  		  	  }
+
+	  	  }
+	  	  else if (buffer[0].ay < -2000)
+	  	  {
+	  		  for (int i = NB_PIXEL / 2; i < NB_PIXEL ; i++)
+	  		  		  	  {
+	  		  		  	  		  WS2812BSPI_encode_pixel_index (64,16,0, i);
+	  		  		  	  }
+	  		  dir = -1;
+	  	  }
+	  	  else if (buffer[0].ay < -1000)
+	  	  {
+	  		  for (int i = NB_PIXEL - NB_PIXEL / 4; i < NB_PIXEL ; i++)
+	  		  		  	  {
+	  		  		  	  		  WS2812BSPI_encode_pixel_index (64,16,0, i);
+	  		  		  	  }
+
+	  	  }
+
+	  	WS2812BSPI_SendData();
+	  osDelay(100);
   }
   /* USER CODE END 5 */ 
 }
@@ -432,42 +493,43 @@ void StartDefaultTask(void const * argument)
 void StartTaskBlink(void const * argument)
 {
   /* USER CODE BEGIN StartTaskBlink */
-  static uint8_t ws_buffer[9*NB_PIXEL+1+9];
-  static mpu_data buffer[MPU_BUFFER_SIZE];
-  static int cnt = 0;
+  //static uint8_t ws_buffer[9*NB_PIXEL+1+9];
+
   /* Infinite loop */
   SD_MPU6050_Result result;
 #ifdef _DEBUG
   printf("Starting:\r\n");
 #endif
 
-  // put MPU ON (default GPIO MPU_ALIM = 0V
-  //HAL_GPIO_WritePin(MPU_ALIM_GPIO_Port, MPU_ALIM_Pin, GPIO_PIN_SET);
-  //osDelay (10000); // wait for MPU to start
 
-  memset (ws_buffer, 0, sizeof(ws_buffer)); // initialize pixel buffer
+
+  //memset (ws_buffer, 0, sizeof(ws_buffer)); // initialize pixel buffer
 
   //HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
   result = SD_MPU6050_Init(&hi2c1,&mpu1,SD_MPU6050_Device_0,SD_MPU6050_Accelerometer_2G,SD_MPU6050_Gyroscope_250s );
-  	  if(result != SD_MPU6050_Result_Ok)
-  	  {
-  		  	  for (;;)
-			  {
-				  for (int t = 0; t < 4; t++)
-				  {
-					  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
-					  osDelay(100);
-				  }
-				  osDelay(500);
-			  }
-			  return;
+  if(result != SD_MPU6050_Result_Ok)
+  {
+  	BlinkError ();
 
-  	  }
+  }
+  if (SD_MPU6050_SetDataRate(&mpu1, SD_MPU6050_DataRate_100Hz) != SD_MPU6050_Result_Ok)
+  {
+	  BlinkError ();
+  }
+  if (SD_MPU6050_EnableAccelFifo(&mpu1) != SD_MPU6050_Result_Ok)
+  {
+	  BlinkError ();
+  }
+  if (SD_MPU6050_EnableFifo(&mpu1) != SD_MPU6050_Result_Ok)
+    {
+  	  BlinkError ();
+    }
 
-  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 10, 0);
+  //HAL_NVIC_SetPriority(EXTI15_10_IRQn, 10, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
-  SD_MPU6050_EnableInterrupts(&hi2c1, &mpu1);
+
+  SD_MPU6050_EnableInterrupts(&mpu1);
   int dir = 0;
   int p = 4;
   int waiter = 0;
@@ -481,16 +543,26 @@ void StartTaskBlink(void const * argument)
 	                           &ulInterruptStatus, /* Receives the notification value. */
 	                           portMAX_DELAY );    /* Block indefinitely. */
 
-	  HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
-	  SD_MPU6050_ReadAll (&hi2c1, &mpu1);
-	  memmove (&buffer[1], &buffer[0], (MPU_BUFFER_SIZE - 1)*sizeof(buffer[0]));
-	  buffer[0].ax = mpu1.Accelerometer_X;
-	  buffer[0].ay = mpu1.Accelerometer_Y;
-	  buffer[0].az = mpu1.Accelerometer_Z;
+	  //HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
 
-	  if (cnt < MPU_BUFFER_SIZE)
-		  cnt++;
+	  SD_MPU6050_ReadInterrupts (&mpu1, &mpu1_interrupt);
+	  if (mpu1_interrupt.F.DataReady != 0)
+	  {
+	  		SD_MPU6050_ReadAll (&mpu1);
 
+	  		memmove (&buffer[1], &buffer[0], (MPU_BUFFER_SIZE - 1)*sizeof(buffer[0]));
+	  		buffer[0].ax = mpu1.Accelerometer_X;
+	  		buffer[0].ay = mpu1.Accelerometer_Y;
+	  		buffer[0].az = mpu1.Accelerometer_Z;
+
+	  		if (cnt < MPU_BUFFER_SIZE)
+	  			cnt++;
+	  }
+	  static uint16_t fifosize = 0;
+	  static uint8_t buf[2048];
+	  SD_MPU6050_GetFifoCount(&mpu1, &fifosize);
+	  if (fifosize > 0)
+		  SD_MPU6050_ReadFifo(&mpu1, fifosize, buf);
 	  if (cnt > 2)
 	  {
 		  if (buffer[0].ax >= 0 && buffer[1].ax < 0)
@@ -503,58 +575,21 @@ void StartTaskBlink(void const * argument)
 		  }
 	  }
 #ifdef _DEBUG
-	  printf ("%d %d %d\n", buffer[0].ax, buffer[0].ay, buffer[0].az);
+	  printf ("%ld %u\n", HAL_GetTick() - prevticks, fifosize);
+	  //printf ("%ld %d %d %d\n", HAL_GetTick() - prevticks, buffer[0].ax, buffer[0].ay, buffer[0].az);
+	  if (prevticks == 0)
+		  prevticks = HAL_GetTick();
 #endif
 
 
-	  for (int i = 0; i < NB_PIXEL; i++)
-	  {
-	  		  WS2812BSPI_encode_pixel(32,0,0, &ws_buffer[i * 9 + 1]);
-	  }
-	  dir = 0;
-	  if (buffer[0].ay > 2000)
-	  {
-		  for (int i = 0; i < NB_PIXEL / 2; i++)
-		  	  {
-		  	  		  WS2812BSPI_encode_pixel(64,16,0, &ws_buffer[i * 9 + 1]);
-		  	  }
-		  dir = +1;
-	  }
-	  else if (buffer[0].ay > 1000)
-	  {
-	  		  for (int i = 0; i < NB_PIXEL / 4; i++)
-	  		  	  {
-	  		  	  		  WS2812BSPI_encode_pixel(64,16,0, &ws_buffer[i * 9 + 1]);
-	  		  	  }
 
-	  }
-	  else if (buffer[0].ay < -2000)
-	  {
-		  for (int i = NB_PIXEL / 2; i < NB_PIXEL ; i++)
-		  		  	  {
-		  		  	  		  WS2812BSPI_encode_pixel(64,16,0, &ws_buffer[i * 9 + 1]);
-		  		  	  }
-		  dir = -1;
-	  }
-	  else if (buffer[0].ay < -1000)
-	  {
-		  for (int i = NB_PIXEL - NB_PIXEL / 4; i < NB_PIXEL ; i++)
-		  		  	  {
-		  		  	  		  WS2812BSPI_encode_pixel(64,16,0, &ws_buffer[i * 9 + 1]);
-		  		  	  }
 
-	  }
 
-	  if (waiter++ % 25 == 0)
-		  p += dir;
-	  if (p < 0)
-		  p = NB_PIXEL - 1;
-	  if (p > NB_PIXEL -1)
-		  p = 0;
-
+#endif
 
 	  //WS2812BSPI_encode_pixel(255,0,0, &ws_buffer[p * 9 + 1]);
-	  HAL_SPI_Transmit(&hspi1, ws_buffer, sizeof(ws_buffer), 500);
+	  //HAL_SPI_Transmit(&hspi1, ws_buffer, sizeof(ws_buffer), 500);
+
 
 	  //printf ("%d %d %d\n", buffer[0].ax, buffer[0].ay, buffer[0].az);
 	  /*
@@ -580,7 +615,7 @@ void StartTaskBlink(void const * argument)
 	  		 *
 	  		 */
 	//printf ("Waiting data\n") ;
-    //osDelay(0);
+    osDelay(1);
   }
   /* USER CODE END StartTaskBlink */
 }
