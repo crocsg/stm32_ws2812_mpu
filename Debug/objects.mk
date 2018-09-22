@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -lrdimon -lc
+LIBS := -lrdimon -lc -llibmplmpu
 

@@ -48,10 +48,24 @@ Core/Src/main.o: ../Core/Src/main.c \
  I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usb_device.h \
  I:/home/blackpill/stm32_ws2812_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usbd_conf.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu_hal_util.h \
  I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mpu_data_handler.h \
  I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ws2812spi.h \
  I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu.h \
- I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu_dmp_motion_driver.h
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu_dmp_motion_driver.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/invensense_adv.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/accel_auto_cal.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mltypes.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/stdint_invensense.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/compass_vec_cal.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/fast_no_motion.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/fusion_9axis.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/gyro_tc.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/heading_from_gyro.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mag_disturb.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/motion_no_motion.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/no_gyro_fusion.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/quaternion_supervisor.h
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h:
 
@@ -151,6 +165,8 @@ I:/home/blackpill/stm32_ws2812_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/
 
 I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usbd_conf.h:
 
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu_hal_util.h:
+
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mpu_data_handler.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ws2812spi.h:
@@ -158,3 +174,29 @@ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ws2812spi.h:
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu_dmp_motion_driver.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/invensense_adv.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/accel_auto_cal.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mltypes.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/stdint_invensense.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/compass_vec_cal.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/fast_no_motion.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/fusion_9axis.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/gyro_tc.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/heading_from_gyro.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mag_disturb.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/motion_no_motion.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/no_gyro_fusion.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/quaternion_supervisor.h:

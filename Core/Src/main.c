@@ -55,13 +55,13 @@
 /* USER CODE BEGIN Includes */
 #include <limits.h>
 
-
+#include "inv_mpu_hal_util.h"
 #include "mpu_data_handler.h"
 #include "ws2812spi.h"
 
 #include "inv_mpu.h"
 #include "inv_mpu_dmp_motion_driver.h"
-
+#include "invensense_adv.h"
 #define _DEBUG 1
 /* USER CODE END Includes */
 
@@ -398,7 +398,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		// read interrupt status
 
 
-
+		HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
 
 			xTaskNotifyFromISR( blinkTaskHandle,
 		                        ulStatusRegister,
@@ -498,7 +498,7 @@ void StartDefaultTask(void const * argument)
 	  		  p = 0;
 	  	  for (int i = 0; i <= p; i++)
 	  		  WS2812BSPI_encode_pixel_index (64,0,0, i);
-#if 1
+#if 0
 	#ifdef _DEBUG
 	  	  printf ("%d\n", p);
 	#endif
@@ -551,12 +551,47 @@ static struct hal_s hal = {0};
 
 void StartTaskBlink(void const * argument)
 {
-	 dmp_load_motion_driver_firmware();
-	    dmp_set_orientation(
-	        inv_orientation_matrix_to_scalar(gyro_pdata.orientation));
-	    dmp_register_tap_cb(tap_cb);
-	    dmp_register_android_orient_cb(android_orient_cb);
-	    /*
+	 /* USER CODE BEGIN StartTaskBlink */
+#ifdef _DEBUG
+	printf ("DMP init\n");
+#endif
+	int int_param;
+	int result;
+
+	set_i2c_device (&hi2c1);
+
+	result = mpu_init(&int_param);
+
+	dmp_load_motion_driver_firmware();
+	dmp_set_orientation(
+	      inv_orientation_matrix_to_scalar(gyro_pdata.orientation));
+	dmp_register_tap_cb(tap_cb);
+	dmp_register_android_orient_cb(android_orient_cb);
+
+	result = inv_init_mpl();
+
+	inv_enable_quaternion();
+	inv_enable_9x_sensor_fusion();
+
+	inv_enable_fast_nomot();
+	inv_enable_gyro_tc();
+
+	inv_enable_eMPL_outputs();
+
+	 result = inv_start_mpl();
+
+	 mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL);
+	 mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL);
+	     mpu_set_sample_rate(DEFAULT_MPU_HZ);
+
+	     unsigned short gyro_rate, gyro_fsr, accel_fsr;
+	mpu_get_sample_rate(&gyro_rate);
+	mpu_get_gyro_fsr(&gyro_fsr);
+	mpu_get_accel_fsr(&accel_fsr);
+
+	inv_set_gyro_sample_rate(1000000L / gyro_rate);
+	inv_set_accel_sample_rate(1000000L / gyro_rate);
+	 /*
 	     * Known Bug -
 	     * DMP when enabled will sample sensor data at 200Hz and output to FIFO at the rate
 	     * specified in the dmp_set_fifo_rate API. The DMP will then sent an interrupt once
@@ -575,6 +610,31 @@ void StartTaskBlink(void const * argument)
 	    dmp_enable_feature(hal.dmp_features);
 	    dmp_set_fifo_rate(DEFAULT_MPU_HZ);
 	    mpu_set_dmp_state(1);
+
+	    HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+	    for (;;)
+	    {
+	    	uint32_t ulInterruptStatus;
+
+	    	xTaskNotifyWait( 0x00,               /* Don't clear any bits on entry. */
+	    		                           ULONG_MAX,          /* Clear all bits on exit. */
+	    		                           &ulInterruptStatus, /* Receives the notification value. */
+	    		                           portMAX_DELAY );    /* Block indefinitely. */
+	    	static short gyro[6];
+	    	static short accel[6];
+	    	static unsigned long timestamp;
+	    	static uint8_t sensors[25];
+	    	static uint8_t more;
+
+	    	mpu_read_fifo (gyro, accel, &timestamp, sensors, &more);
+
+#ifdef _DEBUG
+	    	printf ("accel : %d %d %d\n", accel[0], accel[1], accel[2]);
+#endif
+	    }
+
+	    /* USER CODE END StartTaskBlink */
 }
 #else
 /* StartTaskBlink function */
