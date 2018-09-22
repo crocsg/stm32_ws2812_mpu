@@ -48,9 +48,10 @@ Core/Src/main.o: ../Core/Src/main.c \
  I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usb_device.h \
  I:/home/blackpill/stm32_ws2812_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usbd_conf.h \
- I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/sd_hal_mpu6050.h \
  I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mpu_data_handler.h \
- I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ws2812spi.h
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ws2812spi.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu_dmp_motion_driver.h
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h:
 
@@ -150,8 +151,10 @@ I:/home/blackpill/stm32_ws2812_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/
 
 I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usbd_conf.h:
 
-I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/sd_hal_mpu6050.h:
-
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/mpu_data_handler.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ws2812spi.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/inv_mpu_dmp_motion_driver.h:

@@ -55,9 +55,12 @@
 /* USER CODE BEGIN Includes */
 #include <limits.h>
 
-#include "sd_hal_mpu6050.h"
+
 #include "mpu_data_handler.h"
 #include "ws2812spi.h"
+
+#include "inv_mpu.h"
+#include "inv_mpu_dmp_motion_driver.h"
 
 #define _DEBUG 1
 /* USER CODE END Includes */
@@ -366,8 +369,8 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-static SD_MPU6050 mpu1;
-static SD_MPU6050_Interrupt mpu1_interrupt;
+//static SD_MPU6050 mpu1;
+//static SD_MPU6050_Interrupt mpu1_interrupt;
 
 
 int period = 2000 ;
@@ -505,7 +508,75 @@ void StartDefaultTask(void const * argument)
   }
   /* USER CODE END 5 */ 
 }
+struct platform_data_s {
+    signed char orientation[9];
+};
+static struct platform_data_s gyro_pdata = {
+    .orientation = { 1, 0, 0,
+                     0, 1, 0,
+                     0, 0, 1}
+};
+#if 1
+#define DEFAULT_MPU_HZ  (20)
+static void tap_cb(unsigned char direction, unsigned char count)
+{
 
+}
+static void android_orient_cb(unsigned char orientation)
+{
+
+}
+
+struct rx_s {
+    unsigned char header[3];
+    unsigned char cmd;
+};
+
+struct hal_s {
+    unsigned char lp_accel_mode;
+    unsigned char sensors;
+    unsigned char dmp_on;
+    unsigned char wait_for_tap;
+    volatile unsigned char new_gyro;
+    unsigned char motion_int_mode;
+    unsigned long no_dmp_hz;
+    unsigned long next_pedo_ms;
+    unsigned long next_temp_ms;
+    unsigned long next_compass_ms;
+    unsigned int report;
+    unsigned short dmp_features;
+    struct rx_s rx;
+};
+static struct hal_s hal = {0};
+
+void StartTaskBlink(void const * argument)
+{
+	 dmp_load_motion_driver_firmware();
+	    dmp_set_orientation(
+	        inv_orientation_matrix_to_scalar(gyro_pdata.orientation));
+	    dmp_register_tap_cb(tap_cb);
+	    dmp_register_android_orient_cb(android_orient_cb);
+	    /*
+	     * Known Bug -
+	     * DMP when enabled will sample sensor data at 200Hz and output to FIFO at the rate
+	     * specified in the dmp_set_fifo_rate API. The DMP will then sent an interrupt once
+	     * a sample has been put into the FIFO. Therefore if the dmp_set_fifo_rate is at 25Hz
+	     * there will be a 25Hz interrupt from the MPU device.
+	     *
+	     * There is a known issue in which if you do not enable DMP_FEATURE_TAP
+	     * then the interrupts will be at 200Hz even if fifo rate
+	     * is set at a different rate. To avoid this issue include the DMP_FEATURE_TAP
+	     *
+	     * DMP sensor fusion works only with gyro at +-2000dps and accel +-2G
+	     */
+	    hal.dmp_features = DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |
+	        DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_SEND_CAL_GYRO |
+	        DMP_FEATURE_GYRO_CAL;
+	    dmp_enable_feature(hal.dmp_features);
+	    dmp_set_fifo_rate(DEFAULT_MPU_HZ);
+	    mpu_set_dmp_state(1);
+}
+#else
 /* StartTaskBlink function */
 void StartTaskBlink(void const * argument)
 {
@@ -626,7 +697,7 @@ void StartTaskBlink(void const * argument)
   }
   /* USER CODE END StartTaskBlink */
 }
-
+#endif
 /**
   * @brief  Period elapsed callback in non blocking mode
   * @note   This function is called  when TIM4 interrupt took place, inside
