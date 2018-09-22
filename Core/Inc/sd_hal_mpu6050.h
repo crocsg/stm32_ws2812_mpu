@@ -558,6 +558,14 @@ SD_MPU6050_Result SD_MPU6050_SetGyroscope(SD_MPU6050* DataStruct, SD_MPU6050_Gyr
 SD_MPU6050_Result SD_MPU6050_SetAccelerometer(SD_MPU6050* DataStruct, SD_MPU6050_Accelerometer AccelerometerSensitivity);
 
 /**
+ * @brief  Sets clock source
+ * @param  *DataStruct: Pointer to @ref SD_MPU6050_t structure indicating MPU6050 device
+ * @param  Clock source : MPU6050_CLOCK_INTERNAL, MPU6050_CLOCK_PLL_XGYRO...
+ * @retval Member of @ref SD_MPU6050_Result_t enumeration
+ */
+SD_MPU6050_Result SD_MPU6050_SetClock (SD_MPU6050* DataStruct, uint8_t clock);
+
+/**
  * @brief  Sets output data rate
  * @param  *DataStruct: Pointer to @ref SD_MPU6050_t structure indicating MPU6050 device
  * @param  rate: Data rate value. An 8-bit value for prescaler value

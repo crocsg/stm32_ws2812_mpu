@@ -149,6 +149,8 @@ SD_MPU6050_Result SD_MPU6050_Init(I2C_HandleTypeDef* I2Cx,SD_MPU6050* DataStruct
 					return SD_MPU6050_Result_Error;
 		}
 	//------------------
+	// Set clock
+	SD_MPU6050_SetClock(DataStruct, MPU6050_CLOCK_PLL_XGYRO);
 
 	/* Set sample rate to 1kHz */
 	SD_MPU6050_SetDataRate(DataStruct, SD_MPU6050_DataRate_100Hz);
@@ -173,10 +175,36 @@ SD_MPU6050_Result SD_MPU6050_SetDataRate(SD_MPU6050* DataStruct, uint8_t rate)
 	d[1] = rate;
 
 	/* Set data sample rate */
-	while(HAL_I2C_Master_Transmit(DataStruct->_i2c_dev,(uint16_t)address,(uint8_t *)d,2,1000)!=HAL_OK);
-	/*{
+	if(HAL_I2C_Master_Transmit(DataStruct->_i2c_dev,(uint16_t)address,(uint8_t *)d,2,1000)!=HAL_OK)
+	{
 				return SD_MPU6050_Result_Error;
-	}*/
+	}
+
+	/* Return OK */
+	return SD_MPU6050_Result_Ok;
+}
+
+SD_MPU6050_Result SD_MPU6050_SetClock (SD_MPU6050* DataStruct, uint8_t clock)
+{
+	uint8_t reg[2];
+
+	uint8_t address = DataStruct->Address;
+	/* Format array to send */
+	reg[0] = MPU6050_RA_PWR_MGMT_1;
+	reg[1] = clock;
+
+	 if (HAL_I2C_Master_Transmit(DataStruct->_i2c_dev, (uint16_t)address, &reg[0], 1, 1000) != HAL_OK)
+		 return SD_MPU6050_Result_Error;
+
+	 if (HAL_I2C_Master_Receive(DataStruct->_i2c_dev, (uint16_t)address, &reg[1], 1, 1000) != HAL_OK)
+		 return SD_MPU6050_Result_Error;
+	 reg[1] &= 0b11111000;
+	 reg[1] |= clock;
+	/* Set data sample rate */
+	if(HAL_I2C_Master_Transmit(DataStruct->_i2c_dev,(uint16_t)address,(uint8_t *) reg, sizeof(reg), 1000)!=HAL_OK)
+	{
+				return SD_MPU6050_Result_Error;
+	}
 
 	/* Return OK */
 	return SD_MPU6050_Result_Ok;
@@ -189,19 +217,19 @@ SD_MPU6050_Result SD_MPU6050_SetAccelerometer(SD_MPU6050* DataStruct, SD_MPU6050
 	uint8_t regAdd =(uint8_t )MPU6050_ACCEL_CONFIG;
 
 	/* Config accelerometer */
-	while(HAL_I2C_Master_Transmit(DataStruct->_i2c_dev, (uint16_t)address,&regAdd, 1, 1000) != HAL_OK);
-	/*{
+	if (HAL_I2C_Master_Transmit(DataStruct->_i2c_dev, (uint16_t)address,&regAdd, 1, 1000) != HAL_OK)
+
 				return SD_MPU6050_Result_Error;
-	}*/
-	while(HAL_I2C_Master_Receive(DataStruct->_i2c_dev, (uint16_t)address, &temp, 1, 1000) != HAL_OK);
-	/*{
+
+	if (HAL_I2C_Master_Receive(DataStruct->_i2c_dev, (uint16_t)address, &temp, 1, 1000) != HAL_OK)
+
 				return SD_MPU6050_Result_Error;
-	}*/
+
 	temp = (temp & 0xE7) | (uint8_t)AccelerometerSensitivity << 3;
-	while(HAL_I2C_Master_Transmit(DataStruct->_i2c_dev, (uint16_t)address,&temp, 1, 1000) != HAL_OK);
-	/*{
+	if (HAL_I2C_Master_Transmit(DataStruct->_i2c_dev, (uint16_t)address,&temp, 1, 1000) != HAL_OK)
+
 				return SD_MPU6050_Result_Error;
-	}*/
+
 
 	/* Set sensitivities for multiplying gyro and accelerometer data */
 	switch (AccelerometerSensitivity) {
@@ -408,13 +436,14 @@ SD_MPU6050_Result SD_MPU6050_EnableAccelFifo(SD_MPU6050* DataStruct)
 	while(HAL_I2C_Master_Transmit(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, reg, 1, 1000) != HAL_OK);
 	while(HAL_I2C_Master_Receive(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, &reg[1], 1, 1000) != HAL_OK);
 
-	reg[1] |= (1 << MPU6050_ACCEL_FIFO_EN_BIT);
+	reg[1] = (1 << MPU6050_ACCEL_FIFO_EN_BIT);
 
 	while(HAL_I2C_Master_Transmit(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, reg, sizeof(reg), 1000) != HAL_OK);
 
 	/* Return OK */
 	return SD_MPU6050_Result_Ok;
 }
+
 
 SD_MPU6050_Result SD_MPU6050_EnableFifo(SD_MPU6050* DataStruct)
 {
@@ -431,15 +460,22 @@ SD_MPU6050_Result SD_MPU6050_EnableFifo(SD_MPU6050* DataStruct)
 
 }
 
+
 SD_MPU6050_Result SD_MPU6050_GetFifoCount (SD_MPU6050* DataStruct, uint16_t* size)
 {
 	uint8_t reg = MPU6050_RA_FIFO_COUNTH;
 	uint8_t res[2];
+	uint8_t res2[2];
+
 	while(HAL_I2C_Master_Transmit(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, &reg, 1, 1000) != HAL_OK);
 	while(HAL_I2C_Master_Receive(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, &res[0], 1, 1000) != HAL_OK);
 	reg = MPU6050_RA_FIFO_COUNTL;
 	while(HAL_I2C_Master_Transmit(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, &reg, 1, 1000) != HAL_OK);
 	while(HAL_I2C_Master_Receive(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, &res[1], 1, 1000) != HAL_OK);
+
+	if (HAL_I2C_Mem_Read(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, MPU6050_RA_FIFO_COUNTH, 2, res2, 2, 1000) != HAL_OK)
+			return SD_MPU6050_Result_Error;
+
 
 	*size = (res[0] << 8) + res[1];
 
@@ -448,13 +484,8 @@ SD_MPU6050_Result SD_MPU6050_GetFifoCount (SD_MPU6050* DataStruct, uint16_t* siz
 }
 SD_MPU6050_Result SD_MPU6050_ReadFifo (SD_MPU6050* DataStruct, uint16_t size, uint8_t* pbuf)
 {
-	uint8_t reg = MPU6050_RA_FIFO_R_W;
+	if (HAL_I2C_Mem_Read(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, MPU6050_RA_FIFO_R_W, 1, pbuf, size, 1000) != HAL_OK)
+		return SD_MPU6050_Result_Error;
 
-
-	for (uint16_t i = 0; i < size; i++)
-	{
-		while(HAL_I2C_Master_Transmit(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, &reg, 1, 1000) != HAL_OK);
-		while(HAL_I2C_Master_Receive(DataStruct->_i2c_dev, (uint16_t)DataStruct->Address, &pbuf[i], 1, 1000) != HAL_OK);
-	}
 	return SD_MPU6050_Result_Ok;
 }

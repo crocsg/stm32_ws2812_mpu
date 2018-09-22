@@ -59,7 +59,7 @@
 #include "mpu_data_handler.h"
 #include "ws2812spi.h"
 
-#define _DEBUG 1
+//#define _DEBUG 0
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -426,6 +426,7 @@ static uint32_t prevticks = 0;
 /* StartDefaultTask function */
 void StartDefaultTask(void const * argument)
 {
+	int p = 0;
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
 
@@ -483,8 +484,11 @@ void StartDefaultTask(void const * argument)
 
 	  	  }
 
+	  	p++;
+	  	WS2812BSPI_encode_pixel_index (64,0,0, p % NB_PIXEL);
+
 	  	WS2812BSPI_SendData();
-	  osDelay(100);
+	  osDelay(40);
   }
   /* USER CODE END 5 */ 
 }
@@ -493,19 +497,14 @@ void StartDefaultTask(void const * argument)
 void StartTaskBlink(void const * argument)
 {
   /* USER CODE BEGIN StartTaskBlink */
-  //static uint8_t ws_buffer[9*NB_PIXEL+1+9];
 
-  /* Infinite loop */
+
+
   SD_MPU6050_Result result;
 #ifdef _DEBUG
   printf("Starting:\r\n");
 #endif
 
-
-
-  //memset (ws_buffer, 0, sizeof(ws_buffer)); // initialize pixel buffer
-
-  //HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
   result = SD_MPU6050_Init(&hi2c1,&mpu1,SD_MPU6050_Device_0,SD_MPU6050_Accelerometer_2G,SD_MPU6050_Gyroscope_250s );
   if(result != SD_MPU6050_Result_Ok)
   {
@@ -560,9 +559,25 @@ void StartTaskBlink(void const * argument)
 	  }
 	  static uint16_t fifosize = 0;
 	  static uint8_t buf[2048];
+#ifdef _DEBUG
+			  printf ("get fifo\n");
+#endif
+
 	  SD_MPU6050_GetFifoCount(&mpu1, &fifosize);
-	  if (fifosize > 0)
-		  SD_MPU6050_ReadFifo(&mpu1, fifosize, buf);
+#ifdef _DEBUG
+	  printf ("| %ld %u\n", HAL_GetTick() - prevticks, fifosize);
+#endif
+	  //if (fifosize > 0)
+	  //	  SD_MPU6050_ReadFifo(&mpu1, fifosize, buf);
+
+	  int16_t x,y,z,a,b,c;
+	  x = (buf[0] << 8) + buf[1];
+	  y = (buf[2] << 8) + buf[3];
+	  z = (buf[4] << 8) + buf[5];
+	  a = (buf[6] << 8) + buf[7];
+	  b = (buf[8] << 8) + buf[9];
+	  c = (buf[10] << 8) + buf[11];
+
 	  if (cnt > 2)
 	  {
 		  if (buffer[0].ax >= 0 && buffer[1].ax < 0)
@@ -575,10 +590,16 @@ void StartTaskBlink(void const * argument)
 		  }
 	  }
 #ifdef _DEBUG
-	  printf ("%ld %u\n", HAL_GetTick() - prevticks, fifosize);
+#if 0
+	  for (int i = 0; i < 48; i++)
+		  printf ("%02x ", buf[i]);
+	  printf ("| %ld %u, %d %d %d %d %d %d", HAL_GetTick() - prevticks, fifosize, x,y,z,a,b,c);
+	  printf ("\n");
+#endif
 	  //printf ("%ld %d %d %d\n", HAL_GetTick() - prevticks, buffer[0].ax, buffer[0].ay, buffer[0].az);
-	  if (prevticks == 0)
+	  //if (prevticks == 0)
 		  prevticks = HAL_GetTick();
+
 #endif
 
 
@@ -615,7 +636,7 @@ void StartTaskBlink(void const * argument)
 	  		 *
 	  		 */
 	//printf ("Waiting data\n") ;
-    osDelay(1);
+    osDelay(0);
   }
   /* USER CODE END StartTaskBlink */
 }
