@@ -59,7 +59,7 @@
 #include "mpu_data_handler.h"
 #include "ws2812spi.h"
 
-//#define _DEBUG 0
+#define _DEBUG 1
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -385,7 +385,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		uint32_t ulStatusRegister = 0;
 
 		//HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
+		//HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
 		//
 		//if (mpu1.Accelerometer_X < 0)
 		//	HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
@@ -442,7 +442,7 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+	  //HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 	  int dir;
 
 	  for (int i = 0; i < NB_PIXEL; i++)
@@ -450,7 +450,7 @@ void StartDefaultTask(void const * argument)
 	  	  		  WS2812BSPI_encode_pixel_index(32, 32, 0 , i);
 	  	  }
 	  	  dir = 0;
-	  #if 1
+	  #if 0
 	  	  if (buffer[0].ay > 2000)
 	  	  {
 	  		  for (int i = 0; i < NB_PIXEL / 2; i++)
@@ -483,10 +483,23 @@ void StartDefaultTask(void const * argument)
 	  		  		  	  }
 
 	  	  }
+#endif
+	  	  if (buffer[0].az >= 0)
+	  		  p = NB_PIXEL - 1 - (buffer[0].az * NB_PIXEL / 18240);
+	  	  else
+	  		  p = NB_PIXEL - 1;
 
-	  	p++;
-	  	WS2812BSPI_encode_pixel_index (64,0,0, p % NB_PIXEL);
-
+	  	  if (p >= NB_PIXEL)
+	  		  p = NB_PIXEL -1;
+	  	  else if (p < 0)
+	  		  p = 0;
+	  	  for (int i = 0; i <= p; i++)
+	  		  WS2812BSPI_encode_pixel_index (64,0,0, i);
+#if 1
+	#ifdef _DEBUG
+	  	  printf ("%d\n", p);
+	#endif
+#endif
 	  	WS2812BSPI_SendData();
 	  osDelay(40);
   }
@@ -545,6 +558,7 @@ void StartTaskBlink(void const * argument)
 	  //HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
 
 	  SD_MPU6050_ReadInterrupts (&mpu1, &mpu1_interrupt);
+	  /*
 	  if (mpu1_interrupt.F.DataReady != 0)
 	  {
 	  		SD_MPU6050_ReadAll (&mpu1);
@@ -557,23 +571,27 @@ void StartTaskBlink(void const * argument)
 	  		if (cnt < MPU_BUFFER_SIZE)
 	  			cnt++;
 	  }
+	  */
 	  static uint16_t fifosize = 0;
 	  static uint8_t buf[2048];
-#ifdef _DEBUG
-			  printf ("get fifo\n");
-#endif
 
 	  SD_MPU6050_GetFifoCount(&mpu1, &fifosize);
-#ifdef _DEBUG
-	  printf ("| %ld %u\n", HAL_GetTick() - prevticks, fifosize);
+#if 0
+	#ifdef _DEBUG
+	  	  printf ("| %ld %u\n", HAL_GetTick() - prevticks, fifosize);
+	#endif
 #endif
-	  //if (fifosize > 0)
-	  //	  SD_MPU6050_ReadFifo(&mpu1, fifosize, buf);
+
+	  if (fifosize > 0)
+	  	  SD_MPU6050_ReadFifo(&mpu1, fifosize, buf);
 
 	  int16_t x,y,z,a,b,c;
-	  x = (buf[0] << 8) + buf[1];
-	  y = (buf[2] << 8) + buf[3];
-	  z = (buf[4] << 8) + buf[5];
+	  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+	  buffer[0].ax = (buf[0] << 8) + buf[1];
+	  buffer[0].ay =
+	  buffer[0].ax = x = (buf[0] << 8) + buf[1];
+	  buffer[0].ay = y = (buf[2] << 8) + buf[3];
+	  buffer[0].az = z = (buf[4] << 8) + buf[5];
 	  a = (buf[6] << 8) + buf[7];
 	  b = (buf[8] << 8) + buf[9];
 	  c = (buf[10] << 8) + buf[11];
@@ -586,11 +604,11 @@ void StartTaskBlink(void const * argument)
 			  printf ("%ld X change %d %d \n", HAL_GetTick(), buffer[0].ax, buffer[1].ax);
 #endif
 
-			  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+			  //HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 		  }
 	  }
 #ifdef _DEBUG
-#if 0
+#if 1
 	  for (int i = 0; i < 48; i++)
 		  printf ("%02x ", buf[i]);
 	  printf ("| %ld %u, %d %d %d %d %d %d", HAL_GetTick() - prevticks, fifosize, x,y,z,a,b,c);
@@ -604,38 +622,6 @@ void StartTaskBlink(void const * argument)
 
 
 
-
-
-#endif
-
-	  //WS2812BSPI_encode_pixel(255,0,0, &ws_buffer[p * 9 + 1]);
-	  //HAL_SPI_Transmit(&hspi1, ws_buffer, sizeof(ws_buffer), 500);
-
-
-	  //printf ("%d %d %d\n", buffer[0].ax, buffer[0].ay, buffer[0].az);
-	  /*
-	  SD_MPU6050_ReadTemperature(&hi2c1,&mpu1);
-	  	  	  float temper = mpu1.Temperature;
-	  	  	  SD_MPU6050_ReadGyroscope(&hi2c1,&mpu1);
-	  	  	  int16_t g_x = mpu1.Gyroscope_X;
-	  	  	  int16_t g_y = mpu1.Gyroscope_Y;
-	  	  	  int16_t g_z = mpu1.Gyroscope_Z;
-
-	  	  	  SD_MPU6050_ReadAccelerometer(&hi2c1,&mpu1);
-	  	  	  int16_t a_x = mpu1.Accelerometer_X;
-	  	  	  int16_t a_y = mpu1.Accelerometer_Y;
-	  	  	  int16_t a_z = mpu1.Accelerometer_Z;
-	  	  	  printf ("%d %d %d\n", a_x,a_y,a_z);
-
-	  	  if (a_x > 1024)
-	  		  period = 500;
-	  	  else if (a_z > 512)
-	  		period = 250;
-	  	  //else
-	  		//period = 5000;
-	  		 *
-	  		 */
-	//printf ("Waiting data\n") ;
     osDelay(0);
   }
   /* USER CODE END StartTaskBlink */

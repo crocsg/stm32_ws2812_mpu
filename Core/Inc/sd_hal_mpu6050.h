@@ -514,6 +514,13 @@ typedef union {
 } SD_MPU6050_Interrupt;
 
 
+
+#define MPU6050_DMP_CODE_SIZE       1962    // dmpMemory[]
+#define MPU6050_DMP_CONFIG_SIZE     232     // dmpConfig[]
+#define MPU6050_DMP_UPDATES_SIZE    140     // dmpUpdates[]
+
+
+
 /**
  * @}
  */
@@ -658,6 +665,8 @@ SD_MPU6050_Result SD_MPU6050_EnableFifo(SD_MPU6050* DataStruct);
 SD_MPU6050_Result SD_MPU6050_GetFifoCount (SD_MPU6050* DataStruct, uint16_t* size);
 
 SD_MPU6050_Result SD_MPU6050_ReadFifo (SD_MPU6050* DataStruct, uint16_t size, uint8_t* pbuf);
+
+SD_MPU6050_Result SD_MPU6050_Reset (SD_MPU6050* DataStruct);
 
 /**
  * @}
