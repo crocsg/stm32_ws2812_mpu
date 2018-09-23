@@ -14,6 +14,8 @@ k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.20
                               k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-exit.o) (_global_impure_ptr)
 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-init.o)
                               k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/rdimon-crt0.o (__libc_init_array)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcmp.o)
+                              DMP_Driver/Source/MPU6050/inv_mpu.o (memcmp)
 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcpy-stub.o)
                               Middlewares/Third_Party/FreeRTOS/Source/queue.o (memcpy)
 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memset.o)
@@ -74,10 +76,46 @@ k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.20
                               k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-fvwrite.o) (_realloc_r)
 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-nano-msizer.o)
                               k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-nano-reallocr.o) (_malloc_usable_size_r)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_sin.o)
+                              DMP_Driver/Source/MPU6050/mpu6050.o (sinf)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o)
+                              k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_sin.o) (__ieee754_rem_pio2f)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_cos.o)
+                              k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_sin.o) (__kernel_cosf)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o)
+                              k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o) (__kernel_rem_pio2f)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_sin.o)
+                              k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_sin.o) (__kernel_sinf)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_fabs.o)
+                              k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o) (fabsf)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_floor.o)
+                              k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o) (floorf)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_scalbn.o)
+                              k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o) (scalbnf)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_copysign.o)
+                              k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_scalbn.o) (copysignf)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+                              DMP_Driver/Source/MPU6050/mpu6050.o (__aeabi_dadd)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+                              DMP_Driver/Source/MPU6050/mpu6050.o (__aeabi_dmul)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
+                              DMP_Driver/Source/MPU6050/mpu6050.o (__aeabi_d2f)
 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubsf3.o)
-                              Core/Src/sd_hal_mpu6050.o (__aeabi_fadd)
+                              DMP_Driver/Source/MPU6050/inv_mpu.o (__aeabi_fsub)
 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivsf3.o)
-                              Core/Src/sd_hal_mpu6050.o (__aeabi_fdiv)
+                              DMP_Driver/Source/MPU6050/inv_mpu.o (__aeabi_fmul)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
+                              DMP_Driver/Source/MPU6050/inv_mpu.o (__aeabi_fcmpeq)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixsfsi.o)
+                              DMP_Driver/Source/MPU6050/inv_mpu.o (__aeabi_f2iz)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunssfsi.o)
+                              DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o (__aeabi_f2uiz)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_aeabi_ldivmod.o)
+                              DMP_Driver/Source/MPU6050/inv_mpu.o (__aeabi_ldivmod)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_udivmoddi4.o)
+                              k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_aeabi_ldivmod.o) (__udivmoddi4)
+k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_dvmd_tls.o)
+                              k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_aeabi_ldivmod.o) (__aeabi_ldiv0)
 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libnosys.a(_exit.o)
                               k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-exit.o) (_exit)
 
@@ -90,11 +128,15 @@ blinkTaskHandle     0x4               Core/Src/main.o
 htim4               0x40              Core/Src/stm32f1xx_hal_timebase_TIM.o
 errno               0x4               k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-reent.o)
 hi2c1               0x54              Core/Src/main.o
+accel               0x6               DMP_Driver/Source/MPU6050/mpu6050.o
 uwTick              0x4               Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
 xQueueRegistry      0x40              Middlewares/Third_Party/FreeRTOS/Source/queue.o
 pFlash              0x20              Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o
 UserRxBufferFS      0x3e8             USB_DEVICE/usbd_cdc_if.o
+gyro                0x6               DMP_Driver/Source/MPU6050/mpu6050.o
 UserTxBufferFS      0x3e8             USB_DEVICE/usbd_cdc_if.o
+buffer              0xe               DMP_Driver/Source/MPU6050/mpu6050.o
+MPU6050_FIFO        0x84              DMP_Driver/Source/MPU6050/mpu6050.o
 hdma_i2c1_rx        0x44              Core/Src/main.o
 hdma_memtomem_dma1_channel1
                     0x44              Core/Src/main.o
@@ -102,6 +144,8 @@ hspi1               0x58              Core/Src/main.o
 hpcd_USB_FS         0x460             USB_DEVICE/usbd_conf.o
 USBD_StrDesc        0x200             USB_DEVICE/usbd_desc.o
 hdma_spi1_tx        0x44              Core/Src/main.o
+sensors             0x2               DMP_Driver/Source/MPU6050/mpu6050.o
+Pitch               0x4               DMP_Driver/Source/MPU6050/mpu6050.o
 
 Discarded input sections
 
@@ -1227,6 +1271,801 @@ Discarded input sections
  .debug_macro   0x00000000      0x26c Core/Src/ws2812spi.o
  .debug_macro   0x00000000       0x83 Core/Src/ws2812spi.o
  .debug_macro   0x00000000       0x10 Core/Src/ws2812spi.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/I2C.o
+ .text          0x00000000        0x0 DMP_Driver/Source/MPU6050/I2C.o
+ .data          0x00000000        0x0 DMP_Driver/Source/MPU6050/I2C.o
+ .bss           0x00000000        0x0 DMP_Driver/Source/MPU6050/I2C.o
+ .text.i2c_write
+                0x00000000       0x24 DMP_Driver/Source/MPU6050/I2C.o
+ .text.i2c_read
+                0x00000000       0x24 DMP_Driver/Source/MPU6050/I2C.o
+ .text.IICwriteBit
+                0x00000000       0x4a DMP_Driver/Source/MPU6050/I2C.o
+ .text.IICwriteBits
+                0x00000000       0x52 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_info    0x00000000     0x1104 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_abbrev  0x00000000      0x276 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_loc     0x00000000      0x279 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_aranges
+                0x00000000       0x38 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_ranges  0x00000000       0x28 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x33d DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0xa60 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x2e DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x17b DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x2e DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x22 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x22 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x87 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x51 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0xef DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x6a DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x1df DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0xb8e DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000     0xe90a DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x43 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x58 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x17 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x35 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x9c DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x16 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x97 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x330 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0xfd DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x58 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x1f DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x43 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x20 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x18e DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x1c DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x52 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x40 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x40 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0xd7 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x1c DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x3d DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x16 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x16f DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x50 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x5c2 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x28a DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x1cb DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x11e DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x1b3 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x27 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x1bc DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x3c DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x57 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x8c DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x242 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x264 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x143 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x1f4 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x84c DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x1f DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x50 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x26c DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x83 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000      0x1e1 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_macro   0x00000000       0x46 DMP_Driver/Source/MPU6050/I2C.o
+ .debug_line    0x00000000      0x7fd DMP_Driver/Source/MPU6050/I2C.o
+ .debug_str     0x00000000    0x72c5d DMP_Driver/Source/MPU6050/I2C.o
+ .comment       0x00000000       0x7f DMP_Driver/Source/MPU6050/I2C.o
+ .debug_frame   0x00000000       0xa0 DMP_Driver/Source/MPU6050/I2C.o
+ .ARM.attributes
+                0x00000000       0x33 DMP_Driver/Source/MPU6050/I2C.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text          0x00000000        0x0 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .data          0x00000000       0x2c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .bss           0x00000000        0x0 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.get_accel_prod_shift
+                0x00000000       0xbc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.accel_self_test
+                0x00000000       0xa4 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.gyro_self_test
+                0x00000000       0xfc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.set_int_enable
+                0x00000000       0x98 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.get_st_biases
+                0x00000000      0x448 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_reg_dump
+                0x00000000       0x48 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_read_reg
+                0x00000000       0x40 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_gyro_reg
+                0x00000000       0x74 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_accel_reg
+                0x00000000       0x74 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_temperature
+                0x00000000       0x94 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_accel_bias
+                0x00000000      0x110 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_reset_fifo
+                0x00000000      0x1f4 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_gyro_fsr
+                0x00000000       0x3c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_gyro_fsr
+                0x00000000       0x90 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_accel_fsr
+                0x00000000       0x44 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_accel_fsr
+                0x00000000       0x94 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_lpf
+                0x00000000       0x44 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_lpf
+                0x00000000       0x94 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_sample_rate
+                0x00000000       0x1c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_compass_sample_rate
+                0x00000000        0xa DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_compass_sample_rate
+                0x00000000        0x6 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_gyro_sens
+                0x00000000       0x4c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_accel_sens
+                0x00000000       0x4c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_fifo_config
+                0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_configure_fifo
+                0x00000000       0x60 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_power_state
+                0x00000000       0x18 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_int_status
+                0x00000000       0x44 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_read_fifo
+                0x00000000      0x204 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_read_fifo_stream
+                0x00000000       0xc0 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_bypass
+                0x00000000      0x168 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_int_level
+                0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_int_latched
+                0x00000000       0x74 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_lp_accel_mode
+                0x00000000       0xdc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_sample_rate
+                0x00000000       0xa0 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_sensors
+                0x00000000       0xe4 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_init
+                0x00000000      0x198 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_write_mem
+                0x00000000       0x78 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_read_mem
+                0x00000000       0x78 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_load_firmware
+                0x00000000       0xb4 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_set_dmp_state
+                0x00000000       0x90 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_run_self_test
+                0x00000000       0xf4 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_dmp_state
+                0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_compass_reg
+                0x00000000        0x6 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_get_compass_fsr
+                0x00000000        0x6 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .text.mpu_lp_motion_interrupt
+                0x00000000      0x1ec DMP_Driver/Source/MPU6050/inv_mpu.o
+ .rodata        0x00000000       0x52 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_info    0x00000000     0x2fb5 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_abbrev  0x00000000      0x39d DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_loc     0x00000000     0x1794 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_aranges
+                0x00000000      0x180 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_ranges  0x00000000      0x1a8 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x4d5 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0xa60 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x22 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x52 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x17 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x8d DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x35 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x9c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x16 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x57 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x97 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x330 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0xfd DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x58 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x1f DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x43 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x20 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x18e DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x6a DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x1c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x52 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x40 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x40 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0xd7 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x1c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x3d DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x16 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x16f DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x16 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x35 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x16 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x29 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x16 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x1e1 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x82 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x2e DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x17b DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x2e DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x22 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0xef DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x1df DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0xb8e DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000     0xe90a DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x43 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x50 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x5c2 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x28a DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x1cb DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x11e DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x1b3 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x27 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x1bc DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x3c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x57 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x8c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x242 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x264 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x143 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x1f4 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x84c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x1f DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x50 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x26c DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x83 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000       0x46 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_macro   0x00000000      0x81d DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_line    0x00000000     0x104e DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_str     0x00000000    0x760a3 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .comment       0x00000000       0x7f DMP_Driver/Source/MPU6050/inv_mpu.o
+ .debug_frame   0x00000000      0x638 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .ARM.attributes
+                0x00000000       0x33 DMP_Driver/Source/MPU6050/inv_mpu.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text          0x00000000        0x0 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .data          0x00000000        0x0 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .bss           0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.decode_gesture
+                0x00000000       0x3c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_load_motion_driver_firmware
+                0x00000000       0x18 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_orientation
+                0x00000000      0x140 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_gyro_bias
+                0x00000000      0x114 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_accel_bias
+                0x00000000      0x108 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_fifo_rate
+                0x00000000       0x6c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_get_fifo_rate
+                0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_tap_thresh
+                0x00000000      0x1a8 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_tap_axes
+                0x00000000       0x4e DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_tap_count
+                0x00000000       0x2a DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_tap_time
+                0x00000000       0x2c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_tap_time_multi
+                0x00000000       0x2c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_shake_reject_thresh
+                0x00000000       0x44 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_shake_reject_time
+                0x00000000       0x2c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_shake_reject_timeout
+                0x00000000       0x2c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_get_pedometer_step_count
+                0x00000000       0x4a DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_pedometer_step_count
+                0x00000000       0x30 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_get_pedometer_walk_time
+                0x00000000       0x50 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_pedometer_walk_time
+                0x00000000       0x40 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_get_enabled_features
+                0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_enable_gyro_cal
+                0x00000000       0x44 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_enable_lp_quat
+                0x00000000       0x3c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_enable_6x_lp_quat
+                0x00000000       0x3c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_enable_feature
+                0x00000000      0x218 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_set_interrupt_mode
+                0x00000000       0x5c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_read_fifo
+                0x00000000      0x1dc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_register_tap_cb
+                0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .text.dmp_register_android_orient_cb
+                0x00000000        0xc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .rodata        0x00000000      0xc43 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_info    0x00000000     0x1eff DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_abbrev  0x00000000      0x32c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_loc     0x00000000      0x7b4 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_aranges
+                0x00000000       0xf8 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_ranges  0x00000000       0xe8 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x80c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0xa60 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x22 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x52 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x17 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x8d DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x35 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x9c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x174 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x57 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x58 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x1f DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x43 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x20 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x18e DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x330 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x35 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x82 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0xa6 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0xb8a DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x659 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x2e DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x17b DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x2e DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x22 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0xef DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x6a DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x1df DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0xb8e DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000     0xe90a DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x43 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x1c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x1c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x52 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x40 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x40 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0xd7 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x1c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x3d DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x16 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x16f DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x50 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x5c2 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x28a DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x1cb DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x11e DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x1b3 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x27 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x1bc DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x3c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x57 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x8c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x242 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x264 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x143 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x1f4 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x84c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x1f DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x50 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x26c DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x83 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000      0x1e1 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_macro   0x00000000       0x46 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_line    0x00000000      0xbab DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_str     0x00000000    0x77ee1 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .comment       0x00000000       0x7f DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .debug_frame   0x00000000      0x384 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .ARM.attributes
+                0x00000000       0x33 DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .group         0x00000000        0xc DMP_Driver/Source/MPU6050/mpu6050.o
+ .text          0x00000000        0x0 DMP_Driver/Source/MPU6050/mpu6050.o
+ .data          0x00000000       0x10 DMP_Driver/Source/MPU6050/mpu6050.o
+ .bss           0x00000000       0x12 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.inv_row_2_scale
+                0x00000000       0x3a DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.inv_orientation_matrix_to_scalar
+                0x00000000       0x24 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.run_self_test
+                0x00000000       0x84 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.MPU6050_setClockSource
+                0x00000000       0x18 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.MPU6050_newValues
+                0x00000000      0x194 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.MPU6050_setFullScaleGyroRange
+                0x00000000       0x18 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.MPU6050_setFullScaleAccelRange
+                0x00000000       0x18 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.MPU6050_setSleepEnabled
+                0x00000000       0x10 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.MPU6050_getDeviceID
+                0x00000000       0x18 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.MPU6050_testConnection
+                0x00000000       0x12 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.MPU6050_setI2CMasterModeEnabled
+                0x00000000       0x10 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.MPU6050_setI2CBypassEnabled
+                0x00000000       0x10 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.MPU6050_initialize
+                0x00000000       0x28 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.DMP_Init
+                0x00000000       0x74 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.Read_DMP
+                0x00000000       0xe0 DMP_Driver/Source/MPU6050/mpu6050.o
+ .text.Read_Temperature
+                0x00000000       0x88 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_info    0x00000000     0x1909 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_abbrev  0x00000000      0x3ae DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_loc     0x00000000      0x46e DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_aranges
+                0x00000000       0x98 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_ranges  0x00000000       0x88 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x3a0 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0xa60 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x2e DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x17b DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x2e DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x22 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x22 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x87 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x51 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0xef DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x6a DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x1df DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0xb8e DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000     0xe90a DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x43 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x58 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x17 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x35 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x9c DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x16 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x97 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x330 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0xfd DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x58 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x1f DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x43 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x20 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x18e DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x1c DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x52 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x40 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x10 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x40 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0xd7 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x1c DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x3d DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x16 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x16f DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x50 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x5c2 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x28a DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x1cb DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x11e DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x1b3 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x27 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x1bc DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x34 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x3c DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x57 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x8c DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x242 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x264 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x143 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x1f4 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x84c DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x1f DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x50 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x26c DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x83 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x817 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x82 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0xa6 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000      0x1e1 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_macro   0x00000000       0x46 DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_line    0x00000000      0xa2b DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_str     0x00000000    0x758f2 DMP_Driver/Source/MPU6050/mpu6050.o
+ .comment       0x00000000       0x7f DMP_Driver/Source/MPU6050/mpu6050.o
+ .debug_frame   0x00000000      0x1c4 DMP_Driver/Source/MPU6050/mpu6050.o
+ .ARM.attributes
+                0x00000000       0x33 DMP_Driver/Source/MPU6050/mpu6050.o
+ COMMON         0x00000000       0xac DMP_Driver/Source/MPU6050/mpu6050.o
  .group         0x00000000        0xc Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
  .group         0x00000000        0xc Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
  .group         0x00000000        0xc Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
@@ -5049,6 +5888,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x20 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
  .debug_macro   0x00000000      0x18e Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
  .debug_macro   0x00000000      0x330 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
+ .debug_macro   0x00000000       0x10 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
  .debug_macro   0x00000000       0x35 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
  .debug_macro   0x00000000       0xef Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
  .debug_macro   0x00000000       0x6a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
@@ -6377,6 +7217,13 @@ Discarded input sections
  .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-init.o)
  .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-init.o)
  .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-init.o)
+ .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcmp.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcmp.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcmp.o)
+ .text.memcmp   0x00000000       0x1e k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcmp.o)
+ .debug_frame   0x00000000       0x2c k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcmp.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcmp.o)
  .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcpy-stub.o)
  .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcpy-stub.o)
  .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-memcpy-stub.o)
@@ -6506,6 +7353,99 @@ Discarded input sections
  .debug_frame   0x00000000       0x20 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-nano-msizer.o)
  .ARM.attributes
                 0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-nano-msizer.o)
+ .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_sin.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_sin.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_sin.o)
+ .text.sinf     0x00000000       0x7c k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_sin.o)
+ .debug_frame   0x00000000       0x34 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_sin.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_sin.o)
+ .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o)
+ .text.__ieee754_rem_pio2f
+                0x00000000      0x2e4 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o)
+ .rodata.npio2_hw
+                0x00000000       0x80 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o)
+ .rodata.two_over_pi
+                0x00000000      0x318 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o)
+ .debug_frame   0x00000000       0x48 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-ef_rem_pio2.o)
+ .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_cos.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_cos.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_cos.o)
+ .text.__kernel_cosf
+                0x00000000      0x188 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_cos.o)
+ .debug_frame   0x00000000       0x34 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_cos.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_cos.o)
+ .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o)
+ .text.__kernel_rem_pio2f
+                0x00000000      0x6c4 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o)
+ .rodata.PIo2   0x00000000       0x2c k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o)
+ .rodata.init_jk
+                0x00000000        0xc k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o)
+ .debug_frame   0x00000000       0x50 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_rem_pio2.o)
+ .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_sin.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_sin.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_sin.o)
+ .text.__kernel_sinf
+                0x00000000       0xec k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_sin.o)
+ .debug_frame   0x00000000       0x34 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_sin.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-kf_sin.o)
+ .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_fabs.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_fabs.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_fabs.o)
+ .text.fabsf    0x00000000        0x8 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_fabs.o)
+ .debug_frame   0x00000000       0x20 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_fabs.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_fabs.o)
+ .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_floor.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_floor.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_floor.o)
+ .text.floorf   0x00000000       0x88 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_floor.o)
+ .debug_frame   0x00000000       0x30 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_floor.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_floor.o)
+ .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_scalbn.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_scalbn.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_scalbn.o)
+ .text.scalbnf  0x00000000       0xb0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_scalbn.o)
+ .debug_frame   0x00000000       0x28 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_scalbn.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_scalbn.o)
+ .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_copysign.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_copysign.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_copysign.o)
+ .text.copysignf
+                0x00000000        0xc k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_copysign.o)
+ .debug_frame   0x00000000       0x20 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_copysign.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-sf_copysign.o)
+ .text          0x00000000      0x378 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00000000       0xac k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x00000000       0x1d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .text          0x00000000      0x424 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00000000       0x50 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .ARM.attributes
+                0x00000000       0x1d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .text          0x00000000       0xa0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00000000       0x24 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
+ .ARM.attributes
+                0x00000000       0x1d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_truncdfsf2.o)
  .text          0x00000000      0x21c k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubsf3.o)
  .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubsf3.o)
  .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubsf3.o)
@@ -6518,6 +7458,43 @@ Discarded input sections
  .debug_frame   0x00000000       0x38 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivsf3.o)
  .ARM.attributes
                 0x00000000       0x1d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivsf3.o)
+ .text          0x00000000       0xec k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
+ .debug_frame   0x00000000       0xc8 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
+ .ARM.attributes
+                0x00000000       0x1d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_cmpsf2.o)
+ .text          0x00000000       0x4c k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixsfsi.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixsfsi.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixsfsi.o)
+ .debug_frame   0x00000000       0x24 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixsfsi.o)
+ .ARM.attributes
+                0x00000000       0x1d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixsfsi.o)
+ .text          0x00000000       0x40 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunssfsi.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunssfsi.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunssfsi.o)
+ .debug_frame   0x00000000       0x24 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunssfsi.o)
+ .ARM.attributes
+                0x00000000       0x1d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixunssfsi.o)
+ .text          0x00000000       0xa0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_aeabi_ldivmod.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_aeabi_ldivmod.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_aeabi_ldivmod.o)
+ .debug_frame   0x00000000       0x44 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_aeabi_ldivmod.o)
+ .ARM.attributes
+                0x00000000       0x1d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_aeabi_ldivmod.o)
+ .text          0x00000000      0x2d0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_udivmoddi4.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_udivmoddi4.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_udivmoddi4.o)
+ .ARM.extab     0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x00000000        0x8 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00000000       0x34 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_udivmoddi4.o)
+ .ARM.attributes
+                0x00000000       0x2d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_udivmoddi4.o)
+ .text          0x00000000        0x4 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_dvmd_tls.o)
+ .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00000000       0x1d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_dvmd_tls.o)
  .text          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libnosys.a(_exit.o)
  .data          0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libnosys.a(_exit.o)
  .bss           0x00000000        0x0 k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libnosys.a(_exit.o)
@@ -6556,6 +7533,10 @@ LOAD Core/Src/stm32f1xx_hal_timebase_TIM.o
 LOAD Core/Src/stm32f1xx_it.o
 LOAD Core/Src/system_stm32f1xx.o
 LOAD Core/Src/ws2812spi.o
+LOAD DMP_Driver/Source/MPU6050/I2C.o
+LOAD DMP_Driver/Source/MPU6050/inv_mpu.o
+LOAD DMP_Driver/Source/MPU6050/inv_mpu_dmp_motion_driver.o
+LOAD DMP_Driver/Source/MPU6050/mpu6050.o
 LOAD Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
 LOAD Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
 LOAD Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o
@@ -7953,79 +8934,79 @@ LOAD k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16
                 0x00000c8e       0x1d k:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtn.o
 OUTPUT(led_mpu.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x2ff17
+.debug_info     0x00000000    0x2ff0d
  .debug_info    0x00000000     0x2ad5 Core/Src/main.o
- .debug_info    0x00002ad5     0x1e06 Core/Src/sd_hal_mpu6050.o
- .debug_info    0x000048db     0x16bd Core/Src/stm32f1xx_hal_msp.o
- .debug_info    0x00005f98     0x11a4 Core/Src/stm32f1xx_hal_timebase_TIM.o
- .debug_info    0x0000713c     0x1350 Core/Src/stm32f1xx_it.o
- .debug_info    0x0000848c      0xc15 Core/Src/system_stm32f1xx.o
- .debug_info    0x000090a1     0x1078 Core/Src/ws2812spi.o
- .debug_info    0x0000a119      0xfa6 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
- .debug_info    0x0000b0bf     0x1475 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
- .debug_info    0x0000c534     0x1014 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o
- .debug_info    0x0000d548      0xe87 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
- .debug_info    0x0000e3cf     0x379a Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.o
- .debug_info    0x00011b69     0x19d2 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.o
- .debug_info    0x0001353b      0xe0d Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.o
- .debug_info    0x00014348     0x11ef Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
- .debug_info    0x00015537      0xc67 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o
- .debug_info    0x0001619e     0x214d Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.o
- .debug_info    0x000182eb      0xe25 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.o
- .debug_info    0x00019110     0x3660 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
- .debug_info    0x0001c770     0x1aa8 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
- .debug_info    0x0001e218     0x172c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.o
- .debug_info    0x0001f944     0x1583 Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
- .debug_info    0x00020ec7     0x14ab Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
- .debug_info    0x00022372     0x166a Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
- .debug_info    0x000239dc      0xfd4 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
- .debug_info    0x000249b0     0x231e Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
- .debug_info    0x00026cce      0xacd Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_info    0x0002779b     0x2915 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_info    0x0002a0b0      0x4cb Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o
- .debug_info    0x0002a57b      0xc71 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .debug_info    0x0002b1ec      0xe8b USB_DEVICE/usb_device.o
- .debug_info    0x0002c077     0x10a9 USB_DEVICE/usbd_cdc_if.o
- .debug_info    0x0002d120     0x2076 USB_DEVICE/usbd_conf.o
- .debug_info    0x0002f196      0xd5f USB_DEVICE/usbd_desc.o
- .debug_info    0x0002fef5       0x22 startup/startup_stm32f103xb.o
+ .debug_info    0x00002ad5     0x1dfc Core/Src/sd_hal_mpu6050.o
+ .debug_info    0x000048d1     0x16bd Core/Src/stm32f1xx_hal_msp.o
+ .debug_info    0x00005f8e     0x11a4 Core/Src/stm32f1xx_hal_timebase_TIM.o
+ .debug_info    0x00007132     0x1350 Core/Src/stm32f1xx_it.o
+ .debug_info    0x00008482      0xc15 Core/Src/system_stm32f1xx.o
+ .debug_info    0x00009097     0x1078 Core/Src/ws2812spi.o
+ .debug_info    0x0000a10f      0xfa6 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_info    0x0000b0b5     0x1475 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_info    0x0000c52a     0x1014 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o
+ .debug_info    0x0000d53e      0xe87 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_info    0x0000e3c5     0x379a Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.o
+ .debug_info    0x00011b5f     0x19d2 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.o
+ .debug_info    0x00013531      0xe0d Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.o
+ .debug_info    0x0001433e     0x11ef Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
+ .debug_info    0x0001552d      0xc67 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o
+ .debug_info    0x00016194     0x214d Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.o
+ .debug_info    0x000182e1      0xe25 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.o
+ .debug_info    0x00019106     0x3660 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
+ .debug_info    0x0001c766     0x1aa8 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
+ .debug_info    0x0001e20e     0x172c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.o
+ .debug_info    0x0001f93a     0x1583 Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+ .debug_info    0x00020ebd     0x14ab Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+ .debug_info    0x00022368     0x166a Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+ .debug_info    0x000239d2      0xfd4 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+ .debug_info    0x000249a6     0x231e Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
+ .debug_info    0x00026cc4      0xacd Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_info    0x00027791     0x2915 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_info    0x0002a0a6      0x4cb Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o
+ .debug_info    0x0002a571      0xc71 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_info    0x0002b1e2      0xe8b USB_DEVICE/usb_device.o
+ .debug_info    0x0002c06d     0x10a9 USB_DEVICE/usbd_cdc_if.o
+ .debug_info    0x0002d116     0x2076 USB_DEVICE/usbd_conf.o
+ .debug_info    0x0002f18c      0xd5f USB_DEVICE/usbd_desc.o
+ .debug_info    0x0002feeb       0x22 startup/startup_stm32f103xb.o
 
-.debug_abbrev   0x00000000     0x5ff5
+.debug_abbrev   0x00000000     0x5fe8
  .debug_abbrev  0x00000000      0x3db Core/Src/main.o
- .debug_abbrev  0x000003db      0x2ff Core/Src/sd_hal_mpu6050.o
- .debug_abbrev  0x000006da      0x25f Core/Src/stm32f1xx_hal_msp.o
- .debug_abbrev  0x00000939      0x299 Core/Src/stm32f1xx_hal_timebase_TIM.o
- .debug_abbrev  0x00000bd2      0x256 Core/Src/stm32f1xx_it.o
- .debug_abbrev  0x00000e28      0x228 Core/Src/system_stm32f1xx.o
- .debug_abbrev  0x00001050      0x2b0 Core/Src/ws2812spi.o
- .debug_abbrev  0x00001300      0x2f4 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
- .debug_abbrev  0x000015f4      0x3cd Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
- .debug_abbrev  0x000019c1      0x2e5 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o
- .debug_abbrev  0x00001ca6      0x2a7 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
- .debug_abbrev  0x00001f4d      0x308 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.o
- .debug_abbrev  0x00002255      0x357 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.o
- .debug_abbrev  0x000025ac      0x232 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.o
- .debug_abbrev  0x000027de      0x335 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
- .debug_abbrev  0x00002b13      0x2b4 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o
- .debug_abbrev  0x00002dc7      0x2e1 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.o
- .debug_abbrev  0x000030a8      0x209 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.o
- .debug_abbrev  0x000032b1      0x2ef Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
- .debug_abbrev  0x000035a0      0x2e0 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
- .debug_abbrev  0x00003880      0x2c3 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.o
- .debug_abbrev  0x00003b43      0x31d Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
- .debug_abbrev  0x00003e60      0x2ac Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
- .debug_abbrev  0x0000410c      0x329 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
- .debug_abbrev  0x00004435      0x215 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
- .debug_abbrev  0x0000464a      0x3d4 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
- .debug_abbrev  0x00004a1e      0x21c Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_abbrev  0x00004c3a      0x3cf Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_abbrev  0x00005009      0x24e Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o
- .debug_abbrev  0x00005257      0x318 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .debug_abbrev  0x0000556f      0x218 USB_DEVICE/usb_device.o
- .debug_abbrev  0x00005787      0x2c9 USB_DEVICE/usbd_cdc_if.o
- .debug_abbrev  0x00005a50      0x31c USB_DEVICE/usbd_conf.o
- .debug_abbrev  0x00005d6c      0x277 USB_DEVICE/usbd_desc.o
- .debug_abbrev  0x00005fe3       0x12 startup/startup_stm32f103xb.o
+ .debug_abbrev  0x000003db      0x2f2 Core/Src/sd_hal_mpu6050.o
+ .debug_abbrev  0x000006cd      0x25f Core/Src/stm32f1xx_hal_msp.o
+ .debug_abbrev  0x0000092c      0x299 Core/Src/stm32f1xx_hal_timebase_TIM.o
+ .debug_abbrev  0x00000bc5      0x256 Core/Src/stm32f1xx_it.o
+ .debug_abbrev  0x00000e1b      0x228 Core/Src/system_stm32f1xx.o
+ .debug_abbrev  0x00001043      0x2b0 Core/Src/ws2812spi.o
+ .debug_abbrev  0x000012f3      0x2f4 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_abbrev  0x000015e7      0x3cd Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_abbrev  0x000019b4      0x2e5 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o
+ .debug_abbrev  0x00001c99      0x2a7 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_abbrev  0x00001f40      0x308 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.o
+ .debug_abbrev  0x00002248      0x357 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.o
+ .debug_abbrev  0x0000259f      0x232 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.o
+ .debug_abbrev  0x000027d1      0x335 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
+ .debug_abbrev  0x00002b06      0x2b4 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o
+ .debug_abbrev  0x00002dba      0x2e1 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.o
+ .debug_abbrev  0x0000309b      0x209 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.o
+ .debug_abbrev  0x000032a4      0x2ef Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
+ .debug_abbrev  0x00003593      0x2e0 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
+ .debug_abbrev  0x00003873      0x2c3 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.o
+ .debug_abbrev  0x00003b36      0x31d Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+ .debug_abbrev  0x00003e53      0x2ac Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+ .debug_abbrev  0x000040ff      0x329 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+ .debug_abbrev  0x00004428      0x215 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+ .debug_abbrev  0x0000463d      0x3d4 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
+ .debug_abbrev  0x00004a11      0x21c Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_abbrev  0x00004c2d      0x3cf Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_abbrev  0x00004ffc      0x24e Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o
+ .debug_abbrev  0x0000524a      0x318 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_abbrev  0x00005562      0x218 USB_DEVICE/usb_device.o
+ .debug_abbrev  0x0000577a      0x2c9 USB_DEVICE/usbd_cdc_if.o
+ .debug_abbrev  0x00005a43      0x31c USB_DEVICE/usbd_conf.o
+ .debug_abbrev  0x00005d5f      0x277 USB_DEVICE/usbd_desc.o
+ .debug_abbrev  0x00005fd6       0x12 startup/startup_stm32f103xb.o
 
 .debug_loc      0x00000000    0x11c3f
  .debug_loc     0x00000000      0x279 Core/Src/main.o
@@ -8170,7 +9151,7 @@ OUTPUT(led_mpu.elf elf32-littlearm)
  .debug_ranges  0x00001930       0x40 USB_DEVICE/usbd_desc.o
  .debug_ranges  0x00001970       0x20 startup/startup_stm32f103xb.o
 
-.debug_macro    0x00000000    0x1b3a7
+.debug_macro    0x00000000    0x1b397
  .debug_macro   0x00000000      0x4b2 Core/Src/main.o
  .debug_macro   0x000004b2      0x17b Core/Src/main.o
  .debug_macro   0x0000062d       0x2e Core/Src/main.o
@@ -8277,17 +9258,16 @@ OUTPUT(led_mpu.elf elf32-littlearm)
  .debug_macro   0x000192d6      0x3c8 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
  .debug_macro   0x0001969e      0x3c4 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
  .debug_macro   0x00019a62      0x1fc Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
- .debug_macro   0x00019c5e       0x10 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
- .debug_macro   0x00019c6e       0x26 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
- .debug_macro   0x00019c94      0x18a Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_macro   0x00019e1e      0x273 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_macro   0x0001a091       0x11 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_macro   0x0001a0a2      0x185 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o
- .debug_macro   0x0001a227      0x1b1 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .debug_macro   0x0001a3d8      0x3ff USB_DEVICE/usb_device.o
- .debug_macro   0x0001a7d7      0x3e9 USB_DEVICE/usbd_cdc_if.o
- .debug_macro   0x0001abc0      0x3e1 USB_DEVICE/usbd_conf.o
- .debug_macro   0x0001afa1      0x406 USB_DEVICE/usbd_desc.o
+ .debug_macro   0x00019c5e       0x26 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
+ .debug_macro   0x00019c84      0x18a Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_macro   0x00019e0e      0x273 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_macro   0x0001a081       0x11 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_macro   0x0001a092      0x185 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o
+ .debug_macro   0x0001a217      0x1b1 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_macro   0x0001a3c8      0x3ff USB_DEVICE/usb_device.o
+ .debug_macro   0x0001a7c7      0x3e9 USB_DEVICE/usbd_cdc_if.o
+ .debug_macro   0x0001abb0      0x3e1 USB_DEVICE/usbd_conf.o
+ .debug_macro   0x0001af91      0x406 USB_DEVICE/usbd_desc.o
 
 .debug_line     0x00000000    0x16978
  .debug_line    0x00000000      0xcd6 Core/Src/main.o

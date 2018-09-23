@@ -38,7 +38,8 @@ THE SOFTWARE.
 
 extern ARM_DRIVER_I2C I2CDev_Driver;
 
-HAL_I2C
+extern I2C_HandleTypeDef hi2c1;
+
 #define _i2c_transmit(dev_addr, data, len, pending) \
 	I2CDev_Driver.MasterTransmit(dev_addr, data, len, pending);\
 	while(I2CDev_Driver.GetStatus().busy)

@@ -7,3 +7,5 @@
 /objects.mk
 /startup/
 /objects.list
+/i2cdevlib/
+/DMP_Driver/

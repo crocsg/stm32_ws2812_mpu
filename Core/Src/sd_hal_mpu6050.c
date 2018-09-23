@@ -316,7 +316,7 @@ SD_MPU6050_Result SD_MPU6050_Init(I2C_HandleTypeDef* I2Cx,SD_MPU6050* DataStruct
 	uint8_t WHO_AM_I = (uint8_t)MPU6050_WHO_AM_I;
 	uint8_t temp;
 
-	uint8_t d[2];
+
 
 	// save i2c device
 	DataStruct->_i2c_dev = I2Cx;
@@ -827,6 +827,7 @@ void MPU6050_readMemoryBlock(uint8_t *data, uint16_t dataSize, uint8_t bank, uin
 #if 0
 SD_MPU6050_Result  SD_MPU6050_dmpInitialize(I2C_HandleTypeDef* I2Cx,SD_MPU6050* DataStruct, SD_MPU6050_Device DeviceNumber, SD_MPU6050_Accelerometer AccelerometerSensitivity, SD_MPU6050_Gyroscope GyroscopeSensitivity)
 {
+	// TODO: refactor init to avoid side effect
     // initialize device
 	if (SD_MPU6050_Init(I2Cx, DataStruct, DeviceNumber, AccelerometerSensitivity, GyroscopeSensitivity) != SD_MPU6050_Result_Ok)
 		return SD_MPU6050_Result_Error;
