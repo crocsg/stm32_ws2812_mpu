@@ -96,6 +96,9 @@ void StartTaskBlink(void const * argument);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+
+unsigned char *mpl_key = (unsigned char*)"eMPL 5.1";
+
 void initialise_monitor_handles (void);
 /* USER CODE END 0 */
 
@@ -517,7 +520,7 @@ static struct platform_data_s gyro_pdata = {
                      0, 0, 1}
 };
 #if 1
-#define DEFAULT_MPU_HZ  (20)
+#define DEFAULT_MPU_HZ  (100)
 static void tap_cb(unsigned char direction, unsigned char count)
 {
 
@@ -569,7 +572,7 @@ void StartTaskBlink(void const * argument)
 	dmp_register_android_orient_cb(android_orient_cb);
 
 	result = inv_init_mpl();
-
+/*
 	inv_enable_quaternion();
 	inv_enable_9x_sensor_fusion();
 
@@ -577,7 +580,7 @@ void StartTaskBlink(void const * argument)
 	inv_enable_gyro_tc();
 
 	inv_enable_eMPL_outputs();
-
+*/
 	 result = inv_start_mpl();
 
 	 mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL);
@@ -589,8 +592,8 @@ void StartTaskBlink(void const * argument)
 	mpu_get_gyro_fsr(&gyro_fsr);
 	mpu_get_accel_fsr(&accel_fsr);
 
-	inv_set_gyro_sample_rate(1000000L / gyro_rate);
-	inv_set_accel_sample_rate(1000000L / gyro_rate);
+	//inv_set_gyro_sample_rate(1000000L / gyro_rate);
+	//inv_set_accel_sample_rate(1000000L / gyro_rate);
 	 /*
 	     * Known Bug -
 	     * DMP when enabled will sample sensor data at 200Hz and output to FIFO at the rate
@@ -626,11 +629,15 @@ void StartTaskBlink(void const * argument)
 	    	static unsigned long timestamp;
 	    	static uint8_t sensors[25];
 	    	static uint8_t more;
+	    	static long quat[8];
 
-	    	mpu_read_fifo (gyro, accel, &timestamp, sensors, &more);
+	    	//mpu_read_fifo (gyro, accel, &timestamp, sensors, &more);
+
+	    	dmp_read_fifo(gyro, accel, quat, &timestamp, sensors, &more);
+
 
 #ifdef _DEBUG
-	    	printf ("accel : %d %d %d\n", accel[0], accel[1], accel[2]);
+	    	printf ("accel : %d %d %d %ld %ld %ld %ld\n", accel[0], accel[1], accel[2], quat[0], quat[1], quat[2], quat[3]);
 #endif
 	    }
 

@@ -18,8 +18,8 @@
 #include "log.h"
 #include "mpl.h"
 #include "start_manager.h"
-#include "data_builder.h"
-#include "results_holder.h"
+
+
 #include "mlinclude.h"
 
 /**
@@ -34,10 +34,11 @@ inv_error_t inv_init_mpl(void)
     INV_ERROR_CHECK(inv_init_start_manager());
 
     /* initialize the data builder */
+#if SGN
     INV_ERROR_CHECK(inv_init_data_builder());
 
     INV_ERROR_CHECK(inv_enable_results_holder());
-
+#endif
     return INV_SUCCESS;
 }
 
