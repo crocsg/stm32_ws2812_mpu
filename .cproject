@@ -34,6 +34,7 @@
 								<option id="gnu.c.compiler.option.debugging.level.1326537559" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.214578426" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/DMP_Driver/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/DMP_Driver/Include/MPU6050}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/DMP_Driver/Source}&quot;"/>
 									<listOptionValue builtIn="false" value="../Core/Inc"/>
 									<listOptionValue builtIn="false" value="../Drivers/STM32F1xx_HAL_Driver/Inc"/>
@@ -90,7 +91,8 @@
 									<listOptionValue builtIn="false" value="c"/>
 								</option>
 								<option id="gnu.c.link.option.paths.286861486" name="Library search path (-L)" superClass="gnu.c.link.option.paths" useByScannerDiscovery="false"/>
-								<option id="gnu.c.link.option.ldflags.831958546" name="Linker flags" superClass="gnu.c.link.option.ldflags" useByScannerDiscovery="false" value="-specs=nosys.specs -specs=nano.specs -specs=rdimon.specs " valueType="string"/>
+								<option id="gnu.c.link.option.ldflags.831958546" name="Linker flags" superClass="gnu.c.link.option.ldflags" useByScannerDiscovery="false" value="-specs=nosys.specs -specs=nano.specs -specs=rdimon.specs -u _printf_float" valueType="string"/>
+								<option id="gnu.c.link.option.other.877996329" name="Other options (-Xlinker [option])" superClass="gnu.c.link.option.other" useByScannerDiscovery="false" valueType="stringList"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.927830648" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -147,6 +149,29 @@
 							<tool id="fr.ac6.managedbuild.tool.gnu.cross.assembler.1140531759" name="MCU GCC Assembler" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.936432075">
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1944513356" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.assembler.input.1979064611" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.588580748.801927860" name="/" resourcePath="i2cdevlib/MPU6050">
+						<toolChain id="fr.ac6.managedbuild.toolchain.gnu.cross.exe.debug.756698355" name="Ac6 STM32 MCU GCC" superClass="fr.ac6.managedbuild.toolchain.gnu.cross.exe.debug" unusedChildren="">
+							<option id="fr.ac6.managedbuild.option.gnu.cross.prefix.1732324283.322610325.131611432" name="Prefix" superClass="fr.ac6.managedbuild.option.gnu.cross.prefix.1732324283.322610325"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.mcu.1755094140.1672869339.1551331808" name="Mcu" superClass="fr.ac6.managedbuild.option.gnu.cross.mcu.1755094140.1672869339"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.board.827273988.119645381.1902950243" name="Board" superClass="fr.ac6.managedbuild.option.gnu.cross.board.827273988.119645381"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.instructionSet.1049137955.910263355.393932156" name="Instruction Set" superClass="fr.ac6.managedbuild.option.gnu.cross.instructionSet.1049137955.910263355"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.fpu.1428892155.1629857813.565753984" name="Floating point hardware" superClass="fr.ac6.managedbuild.option.gnu.cross.fpu.1428892155.1629857813"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.floatabi.1733021013.1706657595.1007087386" name="Floating-point ABI" superClass="fr.ac6.managedbuild.option.gnu.cross.floatabi.1733021013.1706657595"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="fr.ac6.managedbuild.targetPlatform.gnu.cross" isAbstract="false" osList="all" superClass="fr.ac6.managedbuild.targetPlatform.gnu.cross"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.295543534" name="MCU GCC Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.1090905948">
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.37982278" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c"/>
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s.791387023" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s"/>
+							</tool>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.cpp.compiler.896657502" name="MCU G++ Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.cpp.compiler.541417751"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.linker.135259785" name="MCU GCC Linker" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.linker.110452938"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.cpp.linker.1763490820" name="MCU G++ Linker" superClass="fr.ac6.managedbuild.tool.gnu.cross.cpp.linker.943404329"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.archiver.1764852605" name="MCU GCC Archiver" superClass="fr.ac6.managedbuild.tool.gnu.archiver.1130818385"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.assembler.307324316" name="MCU GCC Assembler" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.1140531759">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1697288065" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.assembler.input.836810265" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.input"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
@@ -300,7 +325,7 @@
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="Debug">
-			<resource resourceType="PROJECT" workspacePath="led_mpu"/>
+			<resource resourceType="PROJECT" workspacePath="/led_mpu"/>
 		</configuration>
 		<configuration configurationName="Release"/>
 	</storageModule>

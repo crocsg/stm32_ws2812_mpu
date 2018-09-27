@@ -17,6 +17,7 @@
 #define q30  1073741824.0f
 
 short gyro[3], accel[3], sensors;
+long quat[4];
 float Pitch;
 float q0 = 1.0f, q1 = 0.0f, q2 = 0.0f, q3 = 0.0f;
 static signed char gyro_orientation[9] = { -1, 0, 0, 0, -1, 0, 0, 0, 1 };
@@ -287,7 +288,7 @@ void DMP_Init(void) {
 void Read_DMP(void) {
   unsigned long sensor_timestamp;
   unsigned char more;
-  long quat[4];
+
 
   dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors, &more);
   if (sensors & INV_WXYZ_QUAT) {

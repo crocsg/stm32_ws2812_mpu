@@ -54,12 +54,15 @@
 
 /* USER CODE BEGIN Includes */
 #include <limits.h>
-
+#if 0
 #include "sd_hal_mpu6050.h"
 #include "mpu_data_handler.h"
+#else
+#include "mpu6050.h"
+#endif
 #include "ws2812spi.h"
 
-#define _DEBUG 1
+//#define _DEBUG 1
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -366,9 +369,10 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+#if 0
 static SD_MPU6050 mpu1;
 static SD_MPU6050_Interrupt mpu1_interrupt;
-
+#endif
 
 int period = 2000 ;
 
@@ -417,8 +421,11 @@ void BlinkError ()
 	}
 }
 
+#if 0
 static mpu_data buffer[MPU_BUFFER_SIZE];
 static int cnt = 0;
+#endif
+
 static uint32_t prevticks = 0;
 
 /* USER CODE END 4 */
@@ -484,29 +491,77 @@ void StartDefaultTask(void const * argument)
 
 	  	  }
 #endif
+	  	/*
 	  	  if (buffer[0].az >= 0)
 	  		  p = NB_PIXEL - 1 - (buffer[0].az * NB_PIXEL / 18240);
 	  	  else
 	  		  p = NB_PIXEL - 1;
-
+		*/
+	  	if (accel[2] >= 0)
+	  		  		  p = NB_PIXEL - 1 - ((accel[2] -10000) * NB_PIXEL / 8000);
+	  		  	  else
+	  		  		  p = NB_PIXEL - 1;
 	  	  if (p >= NB_PIXEL)
 	  		  p = NB_PIXEL -1;
 	  	  else if (p < 0)
 	  		  p = 0;
 	  	  for (int i = 0; i <= p; i++)
-	  		  WS2812BSPI_encode_pixel_index (64,0,0, i);
-#if 1
+	  		  WS2812BSPI_encode_pixel_index (accel[0] == 0 ? 0 : 64,accel[0] == 0 ? 64 : 0,0, i);
+#if 0
 	#ifdef _DEBUG
 	  	  printf ("%d\n", p);
 	#endif
 #endif
 	  	WS2812BSPI_SendData();
-	  osDelay(40);
+	  osDelay(4);
   }
   /* USER CODE END 5 */ 
 }
 
 /* StartTaskBlink function */
+
+#if 1
+extern short gyro[3], accel[3], sensors;
+extern long quat[4];
+extern float q0, q1, q2, q3;
+extern float Pitch;
+void StartTaskBlink(void const * argument)
+{
+	DMP_Init ();
+	//dmp_set_fifo_rate (10);
+	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+	for (;;)
+	{
+
+		uint32_t ulInterruptStatus;
+
+			  xTaskNotifyWait( 0x00,               /* Don't clear any bits on entry. */
+			                           ULONG_MAX,          /* Clear all bits on exit. */
+			                           &ulInterruptStatus, /* Receives the notification value. */
+			                           portMAX_DELAY );    /* Block indefinitely. */
+
+			  //static short gyro[6];
+			  //static short accel[6];
+			  //static long quat[6];
+			  //static short sensors[24];
+			  //uint32_t timestamp;
+			  //uint8_t more;
+			  //dmp_read_fifo(gyro, accel, quat,&timestamp, sensors, &more);
+			  Read_DMP ();
+			  if (accel[0] > 0)
+				  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+#if 1
+	#ifdef _DEBUG
+	  	  printf ("%04ld | %d %d %d %d %d %d\n", HAL_GetTick( ) - prevticks, accel[0], accel[1], accel[2], gyro[0], gyro[1], gyro[2]);
+	#endif
+#endif
+	  	//if (prevticks == 0)
+	  			  prevticks = HAL_GetTick();
+			  osDelay(25);
+	}
+}
+#else
 void StartTaskBlink(void const * argument)
 {
   /* USER CODE BEGIN StartTaskBlink */
@@ -626,7 +681,7 @@ void StartTaskBlink(void const * argument)
   }
   /* USER CODE END StartTaskBlink */
 }
-
+#endif
 /**
   * @brief  Period elapsed callback in non blocking mode
   * @note   This function is called  when TIM4 interrupt took place, inside
