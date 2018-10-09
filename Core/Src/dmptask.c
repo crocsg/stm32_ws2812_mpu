@@ -1,0 +1,187 @@
+/*
+ * dmptask.c
+ *
+ *  Created on: 9 oct. 2018
+ *      Author: Stephane
+ */
+
+#include "main.h"
+#include "stm32f1xx_hal.h"
+#include "cmsis_os.h"
+#include "usb_device.h"
+
+/* USER CODE BEGIN Includes */
+#include <limits.h>
+#if 0
+#include "sd_hal_mpu6050.h"
+#include "mpu_data_handler.h"
+#else
+#include "mpu6050.h"
+#endif
+#include "ws2812spi.h"
+
+static uint32_t prevticks = 0;
+
+extern short gyro[3], accel[3], sensors;
+extern long quat[4];
+extern float q0, q1, q2, q3;
+extern float Pitch;
+
+#if 0
+static mpu_data buffer[MPU_BUFFER_SIZE];
+static int cnt = 0;
+#endif
+
+
+void dmptask (void const * arg)
+{
+	DMP_Init ();
+		//dmp_set_fifo_rate (10);
+		HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+		for (;;)
+		{
+
+			uint32_t ulInterruptStatus;
+
+				  xTaskNotifyWait( 0x00,               /* Don't clear any bits on entry. */
+				                           ULONG_MAX,          /* Clear all bits on exit. */
+				                           &ulInterruptStatus, /* Receives the notification value. */
+				                           portMAX_DELAY );    /* Block indefinitely. */
+
+				  //static short gyro[6];
+				  //static short accel[6];
+				  //static long quat[6];
+				  //static short sensors[24];
+				  //uint32_t timestamp;
+				  //uint8_t more;
+				  //dmp_read_fifo(gyro, accel, quat,&timestamp, sensors, &more);
+				  Read_DMP ();
+				  if (accel[0] > 0)
+					  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+	#if 1
+		#ifdef _DEBUG
+		  	  printf ("%04ld | %d %d %d %d %d %d\n", HAL_GetTick( ) - prevticks, accel[0], accel[1], accel[2], gyro[0], gyro[1], gyro[2]);
+		#endif
+	#endif
+		  	//if (prevticks == 0)
+		  			  prevticks = HAL_GetTick();
+				  osDelay(25);
+		}
+}
+#if 0
+void mputask (void)
+{
+	 SD_MPU6050_Result result;
+	#ifdef _DEBUG
+	  printf("Starting:\r\n");
+	#endif
+
+	  result = SD_MPU6050_Init(&hi2c1,&mpu1,SD_MPU6050_Device_0,SD_MPU6050_Accelerometer_2G,SD_MPU6050_Gyroscope_250s );
+	  if(result != SD_MPU6050_Result_Ok)
+	  {
+	  	BlinkError ();
+
+	  }
+	  if (SD_MPU6050_SetDataRate(&mpu1, SD_MPU6050_DataRate_100Hz) != SD_MPU6050_Result_Ok)
+	  {
+		  BlinkError ();
+	  }
+	  if (SD_MPU6050_EnableAccelFifo(&mpu1) != SD_MPU6050_Result_Ok)
+	  {
+		  BlinkError ();
+	  }
+	  if (SD_MPU6050_EnableFifo(&mpu1) != SD_MPU6050_Result_Ok)
+	    {
+	  	  BlinkError ();
+	    }
+
+	  //HAL_NVIC_SetPriority(EXTI15_10_IRQn, 10, 0);
+	  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+
+	  SD_MPU6050_EnableInterrupts(&mpu1);
+	  int dir = 0;
+	  int p = 4;
+	  int waiter = 0;
+	  for(;;)
+	  {
+
+		  uint32_t ulInterruptStatus;
+
+		  xTaskNotifyWait( 0x00,               /* Don't clear any bits on entry. */
+		                           ULONG_MAX,          /* Clear all bits on exit. */
+		                           &ulInterruptStatus, /* Receives the notification value. */
+		                           portMAX_DELAY );    /* Block indefinitely. */
+
+		  //HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
+
+		  SD_MPU6050_ReadInterrupts (&mpu1, &mpu1_interrupt);
+		  /*
+		  if (mpu1_interrupt.F.DataReady != 0)
+		  {
+		  		SD_MPU6050_ReadAll (&mpu1);
+
+		  		memmove (&buffer[1], &buffer[0], (MPU_BUFFER_SIZE - 1)*sizeof(buffer[0]));
+		  		buffer[0].ax = mpu1.Accelerometer_X;
+		  		buffer[0].ay = mpu1.Accelerometer_Y;
+		  		buffer[0].az = mpu1.Accelerometer_Z;
+
+		  		if (cnt < MPU_BUFFER_SIZE)
+		  			cnt++;
+		  }
+		  */
+		  static uint16_t fifosize = 0;
+		  static uint8_t buf[2048];
+
+		  SD_MPU6050_GetFifoCount(&mpu1, &fifosize);
+	#if 0
+		#ifdef _DEBUG
+		  	  printf ("| %ld %u\n", HAL_GetTick() - prevticks, fifosize);
+		#endif
+	#endif
+
+		  if (fifosize > 0)
+		  	  SD_MPU6050_ReadFifo(&mpu1, fifosize, buf);
+
+		  int16_t x,y,z,a,b,c;
+		  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+		  buffer[0].ax = (buf[0] << 8) + buf[1];
+		  buffer[0].ay =
+		  buffer[0].ax = x = (buf[0] << 8) + buf[1];
+		  buffer[0].ay = y = (buf[2] << 8) + buf[3];
+		  buffer[0].az = z = (buf[4] << 8) + buf[5];
+		  a = (buf[6] << 8) + buf[7];
+		  b = (buf[8] << 8) + buf[9];
+		  c = (buf[10] << 8) + buf[11];
+
+		  if (cnt > 2)
+		  {
+			  if (buffer[0].ax >= 0 && buffer[1].ax < 0)
+			  {
+	#ifdef _DEBUG
+				  printf ("%ld X change %d %d \n", HAL_GetTick(), buffer[0].ax, buffer[1].ax);
+	#endif
+
+				  //HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+			  }
+		  }
+	#ifdef _DEBUG
+	#if 1
+		  for (int i = 0; i < 48; i++)
+			  printf ("%02x ", buf[i]);
+		  printf ("| %ld %u, %d %d %d %d %d %d", HAL_GetTick() - prevticks, fifosize, x,y,z,a,b,c);
+		  printf ("\n");
+	#endif
+		  //printf ("%ld %d %d %d\n", HAL_GetTick() - prevticks, buffer[0].ax, buffer[0].ay, buffer[0].az);
+		  //if (prevticks == 0)
+			  prevticks = HAL_GetTick();
+
+	#endif
+
+
+
+	    osDelay(0);
+	  }
+}
+#endif

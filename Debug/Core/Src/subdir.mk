@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/dmptask.c \
 ../Core/Src/freertos.c \
 ../Core/Src/main.c \
 ../Core/Src/mpu_data_handler.c \
@@ -15,6 +16,7 @@ C_SRCS += \
 ../Core/Src/ws2812spi.c 
 
 OBJS += \
+./Core/Src/dmptask.o \
 ./Core/Src/freertos.o \
 ./Core/Src/main.o \
 ./Core/Src/mpu_data_handler.o \
@@ -26,6 +28,7 @@ OBJS += \
 ./Core/Src/ws2812spi.o 
 
 C_DEPS += \
+./Core/Src/dmptask.d \
 ./Core/Src/freertos.d \
 ./Core/Src/main.d \
 ./Core/Src/mpu_data_handler.d \
