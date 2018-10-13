@@ -58,6 +58,10 @@
 #include "dmptask.h"
 
 //#define _DEBUG 1
+#ifdef _DEBUG
+#pragma message  "DEBUG CONSOLE ACTIVATED"
+#endif
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -67,7 +71,7 @@ DMA_HandleTypeDef hdma_i2c1_rx;
 SPI_HandleTypeDef hspi1;
 DMA_HandleTypeDef hdma_spi1_tx;
 
-UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart2;
 
 DMA_HandleTypeDef hdma_memtomem_dma1_channel1;
 osThreadId defaultTaskHandle;
@@ -85,7 +89,7 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_SPI1_Init(void);
-static void MX_USART1_UART_Init(void);
+static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void const * argument);
 void StartTaskBlink(void const * argument);
 void StartTaskBLE(void const * argument);
@@ -133,7 +137,7 @@ int main(void)
   MX_DMA_Init();
   MX_I2C1_Init();
   MX_SPI1_Init();
-  MX_USART1_UART_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 	#ifdef _DEBUG
   	  printf("Starting:\r\n");
@@ -163,7 +167,7 @@ int main(void)
   blinkTaskHandle = osThreadCreate(osThread(blinkTask), NULL);
 
   /* definition and creation of BLETask */
-  osThreadDef(BLETask, StartTaskBLE, osPriorityNormal, 0, 128);
+  osThreadDef(BLETask, StartTaskBLE, osPriorityBelowNormal, 0, 128);
   BLETaskHandle = osThreadCreate(osThread(BLETask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -296,19 +300,19 @@ static void MX_SPI1_Init(void)
 
 }
 
-/* USART1 init function */
-static void MX_USART1_UART_Init(void)
+/* USART2 init function */
+static void MX_USART2_UART_Init(void)
 {
 
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 9600;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
@@ -595,7 +599,7 @@ void StartTaskBLE(void const * argument)
   for(;;)
   {
 	  char buf[] = "plop\r\n";
-	  HAL_UART_Transmit (&huart1, buf, sizeof(buf), 1000);
+	  HAL_UART_Transmit (&huart2, buf, sizeof(buf), 1000);
     osDelay(100);
   }
   /* USER CODE END StartTaskBLE */
