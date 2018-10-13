@@ -365,6 +365,14 @@ extern float Pitch;
  extern "C" {
 #endif
 
+ typedef struct
+ {
+ 	short gyro[3], accel[3], sensors;
+ 	long quat[4];
+ 	float Pitch;
+ 	float q0, q1, q2, q3;
+ } dmp_data;
+
 //ä¾›å¤–éƒ¨è°ƒç”¨çš„API
 void MPU6050_initialize(void); //åˆ�å§‹åŒ–
 uint8_t MPU6050_testConnection(void); //æ£€æµ‹MPU6050æ˜¯å�¦å­˜åœ¨

@@ -129,6 +129,11 @@ extern "C" {
     int mpu_run_self_test(long *gyro, long *accel);
     int mpu_register_tap_cb(void (*func)(unsigned char, unsigned char));
 
+    int mpu_get_fifo_size ();
+    int mpu_get_fifo_addr ();
+    int mpu_get_i2c_addr ();
+
+
 #ifdef __cplusplus
 }
 #endif

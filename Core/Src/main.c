@@ -67,9 +67,12 @@ DMA_HandleTypeDef hdma_i2c1_rx;
 SPI_HandleTypeDef hspi1;
 DMA_HandleTypeDef hdma_spi1_tx;
 
+UART_HandleTypeDef huart1;
+
 DMA_HandleTypeDef hdma_memtomem_dma1_channel1;
 osThreadId defaultTaskHandle;
 osThreadId blinkTaskHandle;
+osThreadId BLETaskHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -82,8 +85,10 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_SPI1_Init(void);
+static void MX_USART1_UART_Init(void);
 void StartDefaultTask(void const * argument);
 void StartTaskBlink(void const * argument);
+void StartTaskBLE(void const * argument);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -128,6 +133,7 @@ int main(void)
   MX_DMA_Init();
   MX_I2C1_Init();
   MX_SPI1_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	#ifdef _DEBUG
   	  printf("Starting:\r\n");
@@ -155,6 +161,10 @@ int main(void)
   /* definition and creation of blinkTask */
   osThreadDef(blinkTask, StartTaskBlink, osPriorityNormal, 0, 256);
   blinkTaskHandle = osThreadCreate(osThread(blinkTask), NULL);
+
+  /* definition and creation of BLETask */
+  osThreadDef(BLETask, StartTaskBLE, osPriorityNormal, 0, 128);
+  BLETaskHandle = osThreadCreate(osThread(BLETask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -286,6 +296,25 @@ static void MX_SPI1_Init(void)
 
 }
 
+/* USART1 init function */
+static void MX_USART1_UART_Init(void)
+{
+
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
 /** 
   * Enable DMA controller clock
   * Configure DMA for memory to memory transfers
@@ -370,7 +399,26 @@ static SD_MPU6050_Interrupt mpu1_interrupt;
 #endif
 
 int period = 2000 ;
+uint16_t it_cnt;
+uint32_t it_ticks = 0;
+uint16_t it_freq = 0;
+uint16_t last_fs = 0;
+static uint8_t transfert_pending = 0;
 
+uint8_t fifo_buffer[1024];
+void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
+{
+	// read interrupt status
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+			uint32_t ulStatusRegister = 0;
+	//HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
+	transfert_pending = 0;
+	xTaskNotifyFromISR( blinkTaskHandle,
+			                ulStatusRegister,
+			                        eSetBits,
+			                        &xHigherPriorityTaskWoken );
+
+}
 /**
   * @brief  EXTI line detection callbacks.
   * @param  GPIO_Pin: Specifies the pins connected EXTI line
@@ -380,8 +428,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
  	if (GPIO_Pin == MPU_INTERUPT_Pin)
 	{
-		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-		uint32_t ulStatusRegister = 0;
 
 		//HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
 		//HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
@@ -391,15 +437,37 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		//else
 		//	HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_SET);
 
-		// read interrupt status
+		// read fifo size
+		int fs = mpu_get_fifo_size ();
+		if (fs < 0)
+			return;
+		last_fs = fs;
+		// start read fifo packet buffer
+		if (fs > 512)
+		{
+			HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+			mpu_reset_fifo();
+			return;
+		}
 
 
+		if (dmp_get_fifo_packet_length () <= fs && transfert_pending == 0)
+		{
+			uint16_t size = dmp_get_fifo_packet_length () * (fs / dmp_get_fifo_packet_length ());
+			transfert_pending = 1;
+			HAL_I2C_Mem_Read_DMA (&hi2c1, mpu_get_i2c_addr () << 1, mpu_get_fifo_addr (), I2C_MEMADD_SIZE_8BIT, fifo_buffer, size);
+		}
 
 
-			xTaskNotifyFromISR( blinkTaskHandle,
-		                        ulStatusRegister,
-		                        eSetBits,
-		                        &xHigherPriorityTaskWoken );
+		it_cnt++;
+		if (it_ticks +1000 < HAL_GetTick())
+		{
+						it_freq = it_cnt * 1000 / (HAL_GetTick () - it_ticks);
+						//it_cnt = 0;
+						if (it_ticks = 0)
+							it_ticks = HAL_GetTick ();
+		}
+
 
 
 	}
@@ -424,7 +492,6 @@ extern short gyro[3], accel[3], sensors;
 /* StartDefaultTask function */
 void StartDefaultTask(void const * argument)
 {
-	int p = 0;
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
 
@@ -488,6 +555,7 @@ void StartDefaultTask(void const * argument)
 	  	  else
 	  		  p = NB_PIXEL - 1;
 		*/
+	  	  int p;
 	  	if (accel[2] >= 0)
 	  		  		  p = NB_PIXEL - 1 - ((accel[2] -10000) * NB_PIXEL / 8000);
 	  		  	  else
@@ -512,10 +580,27 @@ void StartDefaultTask(void const * argument)
 /* StartTaskBlink function */
 void StartTaskBlink(void const * argument)
 {
-	/* USER CODE BEGIN StartTaskBlink */
+  /* USER CODE BEGIN StartTaskBlink */
 	dmptask (argument);
-	/* USER CODE END StartTaskBlink */
+
+
+  /* USER CODE END StartTaskBlink */
 }
+
+/* StartTaskBLE function */
+void StartTaskBLE(void const * argument)
+{
+  /* USER CODE BEGIN StartTaskBLE */
+  /* Infinite loop */
+  for(;;)
+  {
+	  char buf[] = "plop\r\n";
+	  HAL_UART_Transmit (&huart1, buf, sizeof(buf), 1000);
+    osDelay(100);
+  }
+  /* USER CODE END StartTaskBLE */
+}
+
 /**
   * @brief  Period elapsed callback in non blocking mode
   * @note   This function is called  when TIM4 interrupt took place, inside

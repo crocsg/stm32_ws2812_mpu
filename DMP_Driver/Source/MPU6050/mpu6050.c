@@ -11,7 +11,7 @@
 #define GYRO_ON         (0x02)
 #define MOTION          (0)
 #define NO_MOTION       (1)
-#define DEFAULT_MPU_HZ  (200)
+#define DEFAULT_MPU_HZ  (50) //(200)
 #define FLASH_SIZE      (512)
 #define FLASH_MEM_START ((void*)0x1800)
 #define q30  1073741824.0f
@@ -20,6 +20,8 @@ short gyro[3], accel[3], sensors;
 long quat[4];
 float Pitch;
 float q0 = 1.0f, q1 = 0.0f, q2 = 0.0f, q3 = 0.0f;
+
+
 static signed char gyro_orientation[9] = { -1, 0, 0, 0, -1, 0, 0, 0, 1 };
 
 static unsigned short inv_row_2_scale(const signed char *row) {
@@ -300,6 +302,23 @@ void Read_DMP(void) {
   }
 
 }
+
+void Decode_DMP(uint8_t* fifo_buffer) {
+  unsigned long sensor_timestamp;
+  unsigned char more;
+
+
+  dmp_decode_fifo (gyro, accel, quat, &sensor_timestamp, &sensors, &more, fifo_buffer);
+  if (sensors & INV_WXYZ_QUAT) {
+    q0 = quat[0] / q30;
+    q1 = quat[1] / q30;
+    q2 = quat[2] / q30;
+    q3 = quat[3] / q30;
+    Pitch = sinf(-2 * q1 * q3 + 2 * q0 * q2) * 57.3;
+  }
+
+}
+
 /**************************************************************************
  å‡½æ•°åŠŸèƒ½ï¼šè¯»å�–MPU6050å†…ç½®æ¸©åº¦ä¼ æ„Ÿå™¨æ•°æ�®
  å…¥å�£å�‚æ•°ï¼šæ— 

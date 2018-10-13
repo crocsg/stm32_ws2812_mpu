@@ -27,46 +27,54 @@ extern long quat[4];
 extern float q0, q1, q2, q3;
 extern float Pitch;
 
+extern uint16_t it_cnt;
+extern uint32_t it_ticks;
+extern uint16_t it_freq;
+
 #if 0
 static mpu_data buffer[MPU_BUFFER_SIZE];
 static int cnt = 0;
 #endif
 
+extern uint8_t fifo_buffer[1024];
+extern uint16_t last_fs;
 
 void dmptask (void const * arg)
 {
 	DMP_Init ();
-		//dmp_set_fifo_rate (10);
-		HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+	//dmp_set_fifo_rate (10);
+	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
-		for (;;)
-		{
+	for (;;) {
 
 			uint32_t ulInterruptStatus;
 
-				  xTaskNotifyWait( 0x00,               /* Don't clear any bits on entry. */
-				                           ULONG_MAX,          /* Clear all bits on exit. */
-				                           &ulInterruptStatus, /* Receives the notification value. */
-				                           portMAX_DELAY );    /* Block indefinitely. */
+			xTaskNotifyWait(0x00, /* Don't clear any bits on entry. */
+			ULONG_MAX, /* Clear all bits on exit. */
+			&ulInterruptStatus, /* Receives the notification value. */
+			portMAX_DELAY); /* Block indefinitely. */
 
-				  //static short gyro[6];
-				  //static short accel[6];
-				  //static long quat[6];
-				  //static short sensors[24];
-				  //uint32_t timestamp;
-				  //uint8_t more;
-				  //dmp_read_fifo(gyro, accel, quat,&timestamp, sensors, &more);
-				  Read_DMP ();
-				  if (accel[0] > 0)
-					  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+			//static short gyro[6];
+			//static short accel[6];
+			//static long quat[6];
+			//static short sensors[24];
+			//uint32_t timestamp;
+			//uint8_t more;
+			//dmp_read_fifo(gyro, accel, quat,&timestamp, sensors, &more);
+			//Read_DMP();
+			Decode_DMP(fifo_buffer);
+			//if (accel[0] > 0)
+			//HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 	#if 1
-		#ifdef _DEBUG
-		  	  printf ("%04ld | %d %d %d %d %d %d\n", HAL_GetTick( ) - prevticks, accel[0], accel[1], accel[2], gyro[0], gyro[1], gyro[2]);
-		#endif
+	#ifdef _DEBUG
+			printf("%04ld | %d %d %d %d %d %d %d %d\n", HAL_GetTick() - prevticks,
+					accel[0], accel[1], accel[2], gyro[0], gyro[1], gyro[2],it_freq, last_fs);
 	#endif
-		  	//if (prevticks == 0)
-		  			  prevticks = HAL_GetTick();
-				  osDelay(25);
+	#endif
+			//if (prevticks == 0)
+			prevticks = HAL_GetTick();
+
+			osDelay(250);
 		}
 }
 #if 0

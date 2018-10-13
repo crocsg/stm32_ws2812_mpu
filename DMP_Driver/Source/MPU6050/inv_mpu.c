@@ -973,6 +973,36 @@ int mpu_get_temperature(long *data, unsigned long *timestamp)
 }
 
 /**
+ * @brief Read fifo size in bytes
+ * @return -1 if error / fifo size in bytes
+ */
+int mpu_get_fifo_size ()
+{
+	uint8_t data[sizeof(uint16_t)];
+	if (i2c_read(st.hw->addr, st.reg->fifo_count_h, sizeof(data), data))
+	        return -1;
+	return ((data[0] << 8) | data[1]);
+}
+
+/**
+ * @brief Read device i2c address
+ * @return i2c address
+ */
+int mpu_get_i2c_addr ()
+{
+	return st.hw->addr;
+}
+
+/**
+ * @brief Read device fifo register address
+ * @return fifo register address
+ */
+int mpu_get_fifo_addr ()
+{
+	return st.reg->fifo_r_w;
+}
+
+/**
  *  @brief      Push biases to the accel bias registers.
  *  This function expects biases relative to the current sensor output, and
  *  these biases will be added to the factory-supplied values.
