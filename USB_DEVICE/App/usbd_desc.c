@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file           : usbd_desc.c
+  * @file           : App/usbd_desc.c
   * @version        : v2.0_Cube
   * @brief          : This file implements the USB device descriptors.
   ******************************************************************************

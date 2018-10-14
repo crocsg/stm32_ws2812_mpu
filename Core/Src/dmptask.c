@@ -23,6 +23,7 @@
 static uint32_t prevticks = 0;
 
 extern short gyro[3], accel[3], sensors;
+extern osMessageQId dataBleQueueHandle;
 extern long quat[4];
 extern float q0, q1, q2, q3;
 extern float Pitch;
@@ -38,6 +39,8 @@ static int cnt = 0;
 
 extern uint8_t fifo_buffer[1024];
 extern uint16_t last_fs;
+
+static dmp_data mpu_data;
 
 void dmptask (void const * arg)
 {
@@ -62,9 +65,15 @@ void dmptask (void const * arg)
 			//uint8_t more;
 			//dmp_read_fifo(gyro, accel, quat,&timestamp, sensors, &more);
 			//Read_DMP();
-			Decode_DMP(fifo_buffer);
+			HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+			Decode_DMP_data(fifo_buffer, &mpu_data);
+			//Decode_DMP (fifo_buffer);
+			// send data to ble queue
+			xQueueSendFromISR ( dataBleQueueHandle, &mpu_data, NULL );
+
+
 			//if (accel[0] > 0)
-			//HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+
 	#if 1
 	#ifdef _DEBUG
 			printf("%04ld | %d %d %d %d %d %d %d %d\n", HAL_GetTick() - prevticks,
@@ -74,7 +83,7 @@ void dmptask (void const * arg)
 			//if (prevticks == 0)
 			prevticks = HAL_GetTick();
 
-			osDelay(250);
+			osDelay(2);
 		}
 }
 #if 0

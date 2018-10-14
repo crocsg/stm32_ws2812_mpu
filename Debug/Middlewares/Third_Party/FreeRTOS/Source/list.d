@@ -2,7 +2,6 @@ Middlewares/Third_Party/FreeRTOS/Source/list.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/list.c \
  I:/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/FreeRTOSConfig.h \
- I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h \
  I:/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
  I:/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
  I:/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
@@ -13,8 +12,6 @@ Middlewares/Third_Party/FreeRTOS/Source/list.o: \
 I:/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/FreeRTOSConfig.h:
-
-I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
 

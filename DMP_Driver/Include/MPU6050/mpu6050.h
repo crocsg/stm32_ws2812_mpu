@@ -369,8 +369,6 @@ extern float Pitch;
  {
  	short gyro[3], accel[3], sensors;
  	long quat[4];
- 	float Pitch;
- 	float q0, q1, q2, q3;
  } dmp_data;
 
 //ä¾›å¤–éƒ¨è°ƒç”¨çš„API
@@ -385,6 +383,9 @@ void MPU6050_InitGyro_Offset(void);//åˆ�å§‹åŒ–é™€èžºä»ªå
 void DMP_Init(void);
 //void (void);
 int Read_Temperature(void);
+
+void Decode_DMP_data(uint8_t* fifo_buffer, dmp_data* pdata);
+void Decode_DMP(uint8_t* fifo_buffer);
 
 #ifdef __cplusplus
 }

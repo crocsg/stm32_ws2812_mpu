@@ -319,6 +319,24 @@ void Decode_DMP(uint8_t* fifo_buffer) {
 
 }
 
+void Decode_DMP_data(uint8_t* fifo_buffer, dmp_data* pdata) {
+  unsigned long sensor_timestamp;
+  unsigned char more;
+
+
+  dmp_decode_fifo (pdata->gyro, pdata->accel, pdata->quat, &sensor_timestamp, &(pdata->sensors), &more, fifo_buffer);
+  if (sensors & INV_WXYZ_QUAT) {
+#if 0
+	  q0 = quat[0] / q30;
+    q1 = quat[1] / q30;
+    q2 = quat[2] / q30;
+    q3 = quat[3] / q30;
+    Pitch = sinf(-2 * q1 * q3 + 2 * q0 * q2) * 57.3;
+#endif
+  }
+
+}
+
 /**************************************************************************
  å‡½æ•°åŠŸèƒ½ï¼šè¯»å�–MPU6050å†…ç½®æ¸©åº¦ä¼ æ„Ÿå™¨æ•°æ�®
  å…¥å�£å�‚æ•°ï¼šæ— 

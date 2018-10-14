@@ -55,6 +55,7 @@
 /* USER CODE BEGIN Includes */
 #include <limits.h>
 #include "ws2812spi.h"
+#include "mpu6050.h"
 #include "dmptask.h"
 
 //#define _DEBUG 1
@@ -77,6 +78,7 @@ DMA_HandleTypeDef hdma_memtomem_dma1_channel1;
 osThreadId defaultTaskHandle;
 osThreadId blinkTaskHandle;
 osThreadId BLETaskHandle;
+osMessageQId dataBleQueueHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -173,6 +175,12 @@ int main(void)
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
+
+  /* Create the queue(s) */
+  /* definition and creation of dataBleQueue */
+/* what about the sizeof here??? cd native code */
+  osMessageQDef(dataBleQueue, 8, dmp_data);
+  dataBleQueueHandle = osMessageCreate(osMessageQ(dataBleQueue), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -348,7 +356,7 @@ static void MX_DMA_Init(void)
   HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 7, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
   /* DMA1_Channel3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 6, 0);
+  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel3_IRQn);
   /* DMA1_Channel7_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Channel7_IRQn, 5, 0);
@@ -412,10 +420,12 @@ static uint8_t transfert_pending = 0;
 uint8_t fifo_buffer[1024];
 void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
 {
+	//HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
+
 	// read interrupt status
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 			uint32_t ulStatusRegister = 0;
-	//HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
+
 	transfert_pending = 0;
 	xTaskNotifyFromISR( blinkTaskHandle,
 			                ulStatusRegister,
@@ -468,7 +478,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		{
 						it_freq = it_cnt * 1000 / (HAL_GetTick () - it_ticks);
 						//it_cnt = 0;
-						if (it_ticks = 0)
+						if (it_ticks == 0)
 							it_ticks = HAL_GetTick ();
 		}
 
@@ -493,7 +503,13 @@ static uint32_t prevticks = 0;
 extern short gyro[3], accel[3], sensors;
 /* USER CODE END 4 */
 
-/* StartDefaultTask function */
+/* USER CODE BEGIN Header_StartDefaultTask */
+/**
+  * @brief  Function implementing the defaultTask thread.
+  * @param  argument: Not used 
+  * @retval None
+  */
+/* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void const * argument)
 {
   /* init code for USB_DEVICE */
@@ -581,7 +597,13 @@ void StartDefaultTask(void const * argument)
   /* USER CODE END 5 */ 
 }
 
-/* StartTaskBlink function */
+/* USER CODE BEGIN Header_StartTaskBlink */
+/**
+* @brief Function implementing the blinkTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTaskBlink */
 void StartTaskBlink(void const * argument)
 {
   /* USER CODE BEGIN StartTaskBlink */
@@ -591,16 +613,20 @@ void StartTaskBlink(void const * argument)
   /* USER CODE END StartTaskBlink */
 }
 
-/* StartTaskBLE function */
+/* USER CODE BEGIN Header_StartTaskBLE */
+/**
+* @brief Function implementing the BLETask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTaskBLE */
 void StartTaskBLE(void const * argument)
 {
   /* USER CODE BEGIN StartTaskBLE */
   /* Infinite loop */
   for(;;)
   {
-	  char buf[] = "plop\r\n";
-	  HAL_UART_Transmit (&huart2, buf, sizeof(buf), 1000);
-    osDelay(100);
+	 bleTask ();
   }
   /* USER CODE END StartTaskBLE */
 }

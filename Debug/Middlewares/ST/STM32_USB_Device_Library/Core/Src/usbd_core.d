@@ -1,7 +1,7 @@
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o: \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
  I:/home/blackpill/stm32_ws2812_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
- I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usbd_conf.h \
+ I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/Target/usbd_conf.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Include/core_cm3.h \
@@ -39,7 +39,7 @@ Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o: \
 
 I:/home/blackpill/stm32_ws2812_mpu/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
 
-I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/usbd_conf.h:
+I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/Target/usbd_conf.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:
 
