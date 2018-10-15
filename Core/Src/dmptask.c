@@ -45,7 +45,7 @@ static dmp_data mpu_data;
 void dmptask (void const * arg)
 {
 	DMP_Init ();
-	//dmp_set_fifo_rate (10);
+	dmp_set_fifo_rate (100);
 	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 	for (;;) {
@@ -65,8 +65,10 @@ void dmptask (void const * arg)
 			//uint8_t more;
 			//dmp_read_fifo(gyro, accel, quat,&timestamp, sensors, &more);
 			//Read_DMP();
-			HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+			//HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 			Decode_DMP_data(fifo_buffer, &mpu_data);
+			mpu_data.it_freq = it_freq;
+
 			//Decode_DMP (fifo_buffer);
 			// send data to ble queue
 			xQueueSendFromISR ( dataBleQueueHandle, &mpu_data, NULL );
@@ -83,7 +85,7 @@ void dmptask (void const * arg)
 			//if (prevticks == 0)
 			prevticks = HAL_GetTick();
 
-			osDelay(2);
+			osDelay(1);
 		}
 }
 #if 0

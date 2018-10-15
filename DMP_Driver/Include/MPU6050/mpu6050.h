@@ -369,6 +369,8 @@ extern float Pitch;
  {
  	short gyro[3], accel[3], sensors;
  	long quat[4];
+ 	short it_freq;
+ 	short ble_freq;
  } dmp_data;
 
 //ä¾›å¤–éƒ¨è°ƒç”¨çš„API

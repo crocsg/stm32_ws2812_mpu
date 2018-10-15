@@ -179,7 +179,7 @@ int main(void)
   /* Create the queue(s) */
   /* definition and creation of dataBleQueue */
 /* what about the sizeof here??? cd native code */
-  osMessageQDef(dataBleQueue, 8, dmp_data);
+  osMessageQDef(dataBleQueue, 2, dmp_data);
   dataBleQueueHandle = osMessageCreate(osMessageQ(dataBleQueue), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
