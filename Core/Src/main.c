@@ -474,13 +474,19 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 
 		it_cnt++;
-		if (it_ticks +1000 < HAL_GetTick())
+		if (it_cnt > 65000)
+		{
+			it_cnt = 1;
+			it_ticks = HAL_GetTick ();
+		}
+		else if (it_ticks +1000 < HAL_GetTick())
 		{
 						it_freq = it_cnt * 1000 / (HAL_GetTick () - it_ticks);
 						//it_cnt = 0;
 						if (it_ticks == 0)
 							it_ticks = HAL_GetTick ();
 		}
+
 
 
 
