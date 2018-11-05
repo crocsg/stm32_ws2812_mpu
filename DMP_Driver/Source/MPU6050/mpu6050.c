@@ -11,7 +11,7 @@
 #define GYRO_ON         (0x02)
 #define MOTION          (0)
 #define NO_MOTION       (1)
-#define DEFAULT_MPU_HZ  (50) //(200)
+#define DEFAULT_MPU_HZ  (200)
 #define FLASH_SIZE      (512)
 #define FLASH_MEM_START ((void*)0x1800)
 #define q30  1073741824.0f

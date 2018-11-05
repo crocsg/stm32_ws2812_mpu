@@ -44,8 +44,9 @@ static dmp_data mpu_data;
 
 void dmptask (void const * arg)
 {
+	int fill_ble = 1;
 	DMP_Init ();
-	dmp_set_fifo_rate (100);
+	//dmp_set_fifo_rate (200);
 	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 	for (;;) {
@@ -70,8 +71,23 @@ void dmptask (void const * arg)
 			mpu_data.it_freq = it_freq;
 
 			//Decode_DMP (fifo_buffer);
+#ifdef _DEBUG
+			printf ("ble queue: %d\r\n", uxQueueSpacesAvailable( dataBleQueueHandle ));
+#endif
+
 			// send data to ble queue
-			xQueueSendFromISR ( dataBleQueueHandle, &mpu_data, NULL );
+			if (fill_ble == 1)
+			{
+				xQueueSendToBack ( dataBleQueueHandle, &mpu_data, 0 );
+				if (uxQueueSpacesAvailable( dataBleQueueHandle ) == 0)
+					fill_ble = 0; // stop filling the queue until it's empty
+			}
+			else
+			{
+				UBaseType_t n;
+				if ((n = uxQueueSpacesAvailable( dataBleQueueHandle )) >= 32)
+					fill_ble = 1; // restart to fill the queue
+			}
 
 
 			//if (accel[0] > 0)

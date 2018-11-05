@@ -51,7 +51,8 @@ Core/Src/main.o: ../Core/Src/main.c \
  I:/home/blackpill/stm32_ws2812_mpu/USB_DEVICE/Target/usbd_conf.h \
  I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ws2812spi.h \
  I:/home/blackpill/stm32_ws2812_mpu/DMP_Driver/Include/MPU6050/mpu6050.h \
- I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/dmptask.h
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/dmptask.h \
+ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ble_if.h
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h:
 
@@ -158,3 +159,5 @@ I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ws2812spi.h:
 I:/home/blackpill/stm32_ws2812_mpu/DMP_Driver/Include/MPU6050/mpu6050.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/dmptask.h:
+
+I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/ble_if.h:

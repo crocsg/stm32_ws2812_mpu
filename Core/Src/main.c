@@ -57,6 +57,7 @@
 #include "ws2812spi.h"
 #include "mpu6050.h"
 #include "dmptask.h"
+#include "ble_if.h"
 
 //#define _DEBUG 1
 #ifdef _DEBUG
@@ -179,11 +180,15 @@ int main(void)
   /* Create the queue(s) */
   /* definition and creation of dataBleQueue */
 /* what about the sizeof here??? cd native code */
-  osMessageQDef(dataBleQueue, 2, dmp_data);
+  osMessageQDef(dataBleQueue, 32, dmp_data);
   dataBleQueueHandle = osMessageCreate(osMessageQ(dataBleQueue), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
+#ifdef _DEBUG
+			printf ("ble queue: %d\r\n", uxQueueSpacesAvailable( dataBleQueueHandle ));
+#endif
+
   /* USER CODE END RTOS_QUEUES */
  
 
@@ -459,7 +464,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		// start read fifo packet buffer
 		if (fs > 512)
 		{
-			HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+			//HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 			mpu_reset_fifo();
 			return;
 		}
@@ -472,7 +477,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			HAL_I2C_Mem_Read_DMA (&hi2c1, mpu_get_i2c_addr () << 1, mpu_get_fifo_addr (), I2C_MEMADD_SIZE_8BIT, fifo_buffer, size);
 		}
 
-
+		// compute acquisition frequency
 		it_cnt++;
 		if (it_cnt > 65000)
 		{
@@ -505,7 +510,7 @@ void BlinkError ()
 }
 
 
-static uint32_t prevticks = 0;
+
 extern short gyro[3], accel[3], sensors;
 /* USER CODE END 4 */
 
