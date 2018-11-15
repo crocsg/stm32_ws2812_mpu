@@ -80,13 +80,19 @@ void dmptask (void const * arg)
 			{
 				xQueueSendToBack ( dataBleQueueHandle, &mpu_data, 0 );
 				if (uxQueueSpacesAvailable( dataBleQueueHandle ) == 0)
+				{
 					fill_ble = 0; // stop filling the queue until it's empty
+					HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+				}
 			}
 			else
 			{
 				UBaseType_t n;
 				if ((n = uxQueueSpacesAvailable( dataBleQueueHandle )) >= 32)
+				{
+					HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 					fill_ble = 1; // restart to fill the queue
+				}
 			}
 
 
