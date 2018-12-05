@@ -2,7 +2,6 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o: \
  ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/stm32f1xx_hal_conf.h \
- I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
  I:/home/blackpill/stm32_ws2812_mpu/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h \
@@ -33,8 +32,6 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o: \
 I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/stm32f1xx_hal_conf.h:
-
-I:/home/blackpill/stm32_ws2812_mpu/Core/Inc/main.h:
 
 I:/home/blackpill/stm32_ws2812_mpu/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:
 

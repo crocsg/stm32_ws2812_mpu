@@ -1,57 +1,17 @@
-
+/* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * This notice applies to any and all portions of this file
-  * that are not between comment pairs USER CODE BEGIN and
-  * USER CODE END. Other portions of this file, whether 
-  * inserted by the user or by software development tools
-  * are owned by their respective copyright owners.
-  *
-  * Copyright (c) 2018 STMicroelectronics International N.V. 
-  * All rights reserved.
-  *
-  * Redistribution and use in source and binary forms, with or without 
-  * modification, are permitted, provided that the following conditions are met:
-  *
-  * 1. Redistribution of source code must retain the above copyright notice, 
-  *    this list of conditions and the following disclaimer.
-  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  *    this list of conditions and the following disclaimer in the documentation
-  *    and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of other 
-  *    contributors to this software may be used to endorse or promote products 
-  *    derived from this software without specific written permission.
-  * 4. This software, including modifications and/or derivative works of this 
-  *    software, must execute solely and exclusively on microcontroller or
-  *    microprocessor devices manufactured by or for STMicroelectronics.
-  * 5. Redistribution and use of this software other than as permitted under 
-  *    this license is void and will automatically terminate your rights under 
-  *    this license. 
-  *
-  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
-  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
-  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-  * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
-  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
-  * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
-  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
-  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  *
-  ******************************************************************************
+  * @brief  Function implementing the defaultTask thread.
+  * @param  argument: Not used 
+  * @retval None
   */
+/* USER CODE END Header */
+
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stm32f1xx_hal.h"
 #include "cmsis_os.h"
 #include "usb_device.h"
 
+/* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <limits.h>
 #include "ws2812spi.h"
@@ -65,6 +25,21 @@
 #endif
 
 /* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
@@ -80,7 +55,6 @@ osThreadId defaultTaskHandle;
 osThreadId blinkTaskHandle;
 osThreadId BLETaskHandle;
 osMessageQId dataBleQueueHandle;
-
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 
@@ -102,14 +76,14 @@ void StartTaskBLE(void const * argument);
 
 /* USER CODE END PFP */
 
+/* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void initialise_monitor_handles (void);
 /* USER CODE END 0 */
 
 /**
   * @brief  The application entry point.
-  *
-  * @retval None
+  * @retval int
   */
 int main(void)
 {
@@ -119,7 +93,7 @@ int main(void)
 #endif
   /* USER CODE END 1 */
 
-  /* MCU Configuration----------------------------------------------------------*/
+  /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
@@ -179,8 +153,7 @@ int main(void)
 
   /* Create the queue(s) */
   /* definition and creation of dataBleQueue */
-/* what about the sizeof here??? cd native code */
-  osMessageQDef(dataBleQueue, 32, dmp_data);
+  osMessageQDef(dataBleQueue, 8, dmp_data);
   dataBleQueueHandle = osMessageCreate(osMessageQ(dataBleQueue), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -202,13 +175,12 @@ int main(void)
   while (1)
   {
 
-  /* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
-  /* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
 
   }
   /* USER CODE END 3 */
-
 }
 
 /**
@@ -217,13 +189,12 @@ int main(void)
   */
 void SystemClock_Config(void)
 {
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
-  RCC_OscInitTypeDef RCC_OscInitStruct;
-  RCC_ClkInitTypeDef RCC_ClkInitStruct;
-  RCC_PeriphCLKInitTypeDef PeriphClkInit;
-
-    /**Initializes the CPU, AHB and APB busses clocks 
-    */
+  /**Initializes the CPU, AHB and APB busses clocks 
+  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
@@ -233,11 +204,10 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler();
   }
-
-    /**Initializes the CPU, AHB and APB busses clocks 
-    */
+  /**Initializes the CPU, AHB and APB busses clocks 
+  */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
@@ -247,32 +217,31 @@ void SystemClock_Config(void)
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler();
   }
-
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
   PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler();
   }
-
-    /**Configure the Systick interrupt time 
-    */
-  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
-
-    /**Configure the Systick 
-    */
-  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
-
-  /* SysTick_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
 }
 
-/* I2C1 init function */
+/**
+  * @brief I2C1 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_I2C1_Init(void)
 {
 
+  /* USER CODE BEGIN I2C1_Init 0 */
+
+  /* USER CODE END I2C1_Init 0 */
+
+  /* USER CODE BEGIN I2C1_Init 1 */
+
+  /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
   hi2c1.Init.ClockSpeed = 100000;
   hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
@@ -284,15 +253,29 @@ static void MX_I2C1_Init(void)
   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler();
   }
+  /* USER CODE BEGIN I2C1_Init 2 */
+
+  /* USER CODE END I2C1_Init 2 */
 
 }
 
-/* SPI1 init function */
+/**
+  * @brief SPI1 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_SPI1_Init(void)
 {
 
+  /* USER CODE BEGIN SPI1_Init 0 */
+
+  /* USER CODE END SPI1_Init 0 */
+
+  /* USER CODE BEGIN SPI1_Init 1 */
+
+  /* USER CODE END SPI1_Init 1 */
   /* SPI1 parameter configuration*/
   hspi1.Instance = SPI1;
   hspi1.Init.Mode = SPI_MODE_MASTER;
@@ -308,15 +291,29 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CRCPolynomial = 10;
   if (HAL_SPI_Init(&hspi1) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler();
   }
+  /* USER CODE BEGIN SPI1_Init 2 */
+
+  /* USER CODE END SPI1_Init 2 */
 
 }
 
-/* USART2 init function */
+/**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_USART2_UART_Init(void)
 {
 
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
   huart2.Init.BaudRate = 115200;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
@@ -327,8 +324,11 @@ static void MX_USART2_UART_Init(void)
   huart2.Init.OverSampling = UART_OVERSAMPLING_16;
   if (HAL_UART_Init(&huart2) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler();
   }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
 
 }
 
@@ -353,7 +353,7 @@ static void MX_DMA_Init(void)
   hdma_memtomem_dma1_channel1.Init.Priority = DMA_PRIORITY_LOW;
   if (HAL_DMA_Init(&hdma_memtomem_dma1_channel1) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler( );
   }
 
   /* DMA interrupt init */
@@ -369,17 +369,14 @@ static void MX_DMA_Init(void)
 
 }
 
-/** Configure pins as 
-        * Analog 
-        * Input 
-        * Output
-        * EVENT_OUT
-        * EXTI
-*/
+/**
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_GPIO_Init(void)
 {
-
-  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
@@ -403,8 +400,17 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(MPU_INTERUPT_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : MPU_INTERRUPT2_Pin */
+  GPIO_InitStruct.Pin = MPU_INTERRUPT2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(MPU_INTERRUPT2_GPIO_Port, &GPIO_InitStruct);
+
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 10, 0);
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 10, 0);
+  //HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
   //HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
@@ -445,11 +451,11 @@ void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
   */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
- 	if (GPIO_Pin == MPU_INTERUPT_Pin)
+ 	if (GPIO_Pin == MPU_INTERUPT_Pin || GPIO_Pin == MPU_INTERRUPT2_Pin)
 	{
 
 		//HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
-		//HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
+		HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
 		//
 		//if (mpu1.Accelerometer_X < 0)
 		//	HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
@@ -603,7 +609,7 @@ void StartDefaultTask(void const * argument)
 	#endif
 #endif
 	  	WS2812BSPI_SendData();
-	  osDelay(4);
+	  osDelay(40);
   }
   /* USER CODE END 5 */ 
 }
@@ -665,11 +671,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 /**
   * @brief  This function is executed in case of error occurrence.
-  * @param  file: The file name as string.
-  * @param  line: The line in file as a number.
   * @retval None
   */
-void _Error_Handler(char *file, int line)
+void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
@@ -687,7 +691,7 @@ void _Error_Handler(char *file, int line)
   * @param  line: assert_param error line source number
   * @retval None
   */
-void assert_failed(uint8_t* file, uint32_t line)
+void assert_failed(uint8_t *file, uint32_t line)
 { 
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
@@ -695,13 +699,5 @@ void assert_failed(uint8_t* file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

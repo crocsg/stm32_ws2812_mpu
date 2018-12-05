@@ -1,3 +1,4 @@
+/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
   * File Name          : stm32f1xx_hal_msp.c
@@ -46,13 +47,47 @@
   *
   ******************************************************************************
   */
+/* USER CODE END Header */
+
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f1xx_hal.h"
+#include "main.h"
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
 extern DMA_HandleTypeDef hdma_i2c1_rx;
 
 extern DMA_HandleTypeDef hdma_spi1_tx;
 
-extern void _Error_Handler(char *, int);
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN TD */
+
+/* USER CODE END TD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN Define */
+ 
+/* USER CODE END Define */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN Macro */
+
+/* USER CODE END Macro */
+
+/* Private variables ---------------------------------------------------------*/
+/* USER CODE BEGIN PV */
+
+/* USER CODE END PV */
+
+/* Private function prototypes -----------------------------------------------*/
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* External functions --------------------------------------------------------*/
+/* USER CODE BEGIN ExternalFunctions */
+
+/* USER CODE END ExternalFunctions */
+
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
@@ -68,26 +103,12 @@ void HAL_MspInit(void)
   __HAL_RCC_AFIO_CLK_ENABLE();
   __HAL_RCC_PWR_CLK_ENABLE();
 
-  HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
-
   /* System interrupt init*/
-  /* MemoryManagement_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(MemoryManagement_IRQn, 0, 0);
-  /* BusFault_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(BusFault_IRQn, 0, 0);
-  /* UsageFault_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(UsageFault_IRQn, 0, 0);
-  /* SVCall_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SVCall_IRQn, 0, 0);
-  /* DebugMonitor_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DebugMonitor_IRQn, 0, 0);
   /* PendSV_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(PendSV_IRQn, 15, 0);
-  /* SysTick_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
 
-    /**NOJTAG: JTAG-DP Disabled and SW-DP Enabled 
-    */
+  /**NOJTAG: JTAG-DP Disabled and SW-DP Enabled 
+  */
   __HAL_AFIO_REMAP_SWJ_NOJTAG();
 
   /* USER CODE BEGIN MspInit 1 */
@@ -95,16 +116,23 @@ void HAL_MspInit(void)
   /* USER CODE END MspInit 1 */
 }
 
+/**
+* @brief I2C MSP Initialization
+* This function configures the hardware resources used in this example
+* @param hi2c: I2C handle pointer
+* @retval None
+*/
 void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
 {
 
-  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(hi2c->Instance==I2C1)
   {
   /* USER CODE BEGIN I2C1_MspInit 0 */
 
   /* USER CODE END I2C1_MspInit 0 */
   
+    __HAL_RCC_GPIOB_CLK_ENABLE();
     /**I2C1 GPIO Configuration    
     PB6     ------> I2C1_SCL
     PB7     ------> I2C1_SDA 
@@ -129,7 +157,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
     hdma_i2c1_rx.Init.Priority = DMA_PRIORITY_MEDIUM;
     if (HAL_DMA_Init(&hdma_i2c1_rx) != HAL_OK)
     {
-      _Error_Handler(__FILE__, __LINE__);
+      Error_Handler();
     }
 
     __HAL_LINKDMA(hi2c,hdmarx,hdma_i2c1_rx);
@@ -140,6 +168,13 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
   }
 
 }
+
+/**
+* @brief I2C MSP De-Initialization
+* This function freeze the hardware resources used in this example
+* @param hi2c: I2C handle pointer
+* @retval None
+*/
 
 void HAL_I2C_MspDeInit(I2C_HandleTypeDef* hi2c)
 {
@@ -167,10 +202,16 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* hi2c)
 
 }
 
+/**
+* @brief SPI MSP Initialization
+* This function configures the hardware resources used in this example
+* @param hspi: SPI handle pointer
+* @retval None
+*/
 void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
 {
 
-  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(hspi->Instance==SPI1)
   {
   /* USER CODE BEGIN SPI1_MspInit 0 */
@@ -179,6 +220,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     /* Peripheral clock enable */
     __HAL_RCC_SPI1_CLK_ENABLE();
   
+    __HAL_RCC_GPIOA_CLK_ENABLE();
     /**SPI1 GPIO Configuration    
     PA5     ------> SPI1_SCK
     PA7     ------> SPI1_MOSI 
@@ -200,7 +242,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     hdma_spi1_tx.Init.Priority = DMA_PRIORITY_HIGH;
     if (HAL_DMA_Init(&hdma_spi1_tx) != HAL_OK)
     {
-      _Error_Handler(__FILE__, __LINE__);
+      Error_Handler();
     }
 
     __HAL_LINKDMA(hspi,hdmatx,hdma_spi1_tx);
@@ -211,6 +253,13 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
   }
 
 }
+
+/**
+* @brief SPI MSP De-Initialization
+* This function freeze the hardware resources used in this example
+* @param hspi: SPI handle pointer
+* @retval None
+*/
 
 void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
 {
@@ -238,10 +287,16 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
 
 }
 
+/**
+* @brief UART MSP Initialization
+* This function configures the hardware resources used in this example
+* @param huart: UART handle pointer
+* @retval None
+*/
 void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 {
 
-  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(huart->Instance==USART2)
   {
   /* USER CODE BEGIN USART2_MspInit 0 */
@@ -250,6 +305,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     /* Peripheral clock enable */
     __HAL_RCC_USART2_CLK_ENABLE();
   
+    __HAL_RCC_GPIOA_CLK_ENABLE();
     /**USART2 GPIO Configuration    
     PA2     ------> USART2_TX
     PA3     ------> USART2_RX 
@@ -273,6 +329,13 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
   }
 
 }
+
+/**
+* @brief UART MSP De-Initialization
+* This function freeze the hardware resources used in this example
+* @param huart: UART handle pointer
+* @retval None
+*/
 
 void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
 {
@@ -303,13 +366,5 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

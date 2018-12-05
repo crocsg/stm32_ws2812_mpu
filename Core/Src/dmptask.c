@@ -47,7 +47,9 @@ void dmptask (void const * arg)
 	int fill_ble = 1;
 	DMP_Init ();
 	//dmp_set_fifo_rate (200);
+	HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
 
 	for (;;) {
 
@@ -66,7 +68,7 @@ void dmptask (void const * arg)
 			//uint8_t more;
 			//dmp_read_fifo(gyro, accel, quat,&timestamp, sensors, &more);
 			//Read_DMP();
-			//HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+			HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 			Decode_DMP_data(fifo_buffer, &mpu_data);
 			mpu_data.it_freq = it_freq;
 
@@ -82,7 +84,7 @@ void dmptask (void const * arg)
 				if (uxQueueSpacesAvailable( dataBleQueueHandle ) == 0)
 				{
 					fill_ble = 0; // stop filling the queue until it's empty
-					HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+					//HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 				}
 			}
 			else
@@ -90,7 +92,7 @@ void dmptask (void const * arg)
 				UBaseType_t n;
 				if ((n = uxQueueSpacesAvailable( dataBleQueueHandle )) >= 32)
 				{
-					HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+					//HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 					fill_ble = 1; // restart to fill the queue
 				}
 			}
