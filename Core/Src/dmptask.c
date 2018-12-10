@@ -47,7 +47,7 @@ void dmptask (void const * arg)
 	int fill_ble = 1;
 	DMP_Init ();
 	//dmp_set_fifo_rate (200);
-	HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 
@@ -68,9 +68,12 @@ void dmptask (void const * arg)
 			//uint8_t more;
 			//dmp_read_fifo(gyro, accel, quat,&timestamp, sensors, &more);
 			//Read_DMP();
-			HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+			//HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 			Decode_DMP_data(fifo_buffer, &mpu_data);
 			mpu_data.it_freq = it_freq;
+			accel[0] = mpu_data.accel[0];
+			accel[1] = mpu_data.accel[1];
+			accel[2] = mpu_data.accel[2];
 
 			//Decode_DMP (fifo_buffer);
 #ifdef _DEBUG

@@ -88,14 +88,14 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define MPU_INTERRUPT2_Pin GPIO_PIN_0
+#define MPU_INTERRUPT2_GPIO_Port GPIOA
+#define MPU_INTERRUPT2_EXTI_IRQn EXTI0_IRQn
 #define USERLED_Pin GPIO_PIN_12
 #define USERLED_GPIO_Port GPIOB
 #define MPU_INTERUPT_Pin GPIO_PIN_15
 #define MPU_INTERUPT_GPIO_Port GPIOA
 #define MPU_INTERUPT_EXTI_IRQn EXTI15_10_IRQn
-#define MPU_INTERRUPT2_Pin GPIO_PIN_4
-#define MPU_INTERRUPT2_GPIO_Port GPIOB
-#define MPU_INTERRUPT2_EXTI_IRQn EXTI4_IRQn
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

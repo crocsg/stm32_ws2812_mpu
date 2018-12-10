@@ -387,6 +387,12 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_SET);
 
+  /*Configure GPIO pins : MPU_INTERRUPT2_Pin MPU_INTERUPT_Pin */
+  GPIO_InitStruct.Pin = MPU_INTERRUPT2_Pin|MPU_INTERUPT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
   /*Configure GPIO pin : USERLED_Pin */
   GPIO_InitStruct.Pin = USERLED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -394,23 +400,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
   HAL_GPIO_Init(USERLED_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : MPU_INTERUPT_Pin */
-  GPIO_InitStruct.Pin = MPU_INTERUPT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(MPU_INTERUPT_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : MPU_INTERRUPT2_Pin */
-  GPIO_InitStruct.Pin = MPU_INTERRUPT2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(MPU_INTERRUPT2_GPIO_Port, &GPIO_InitStruct);
-
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI4_IRQn, 10, 0);
-  //HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 5, 0);
+  //HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 10, 0);
   //HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
@@ -455,7 +449,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	{
 
 		//HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
+		//HAL_GPIO_TogglePin(USERLED_GPIO_Port,USERLED_Pin);
 		//
 		//if (mpu1.Accelerometer_X < 0)
 		//	HAL_GPIO_WritePin(USERLED_GPIO_Port, USERLED_Pin, GPIO_PIN_RESET);
@@ -544,12 +538,12 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  //HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
+	  HAL_GPIO_TogglePin(USERLED_GPIO_Port, USERLED_Pin);
 	  int dir;
 
 	  for (int i = 0; i < NB_PIXEL; i++)
 	  	  {
-	  	  		  WS2812BSPI_encode_pixel_index(32, 32, 0 , i);
+	  	  		  WS2812BSPI_encode_pixel_index(32, 32, 32 , i);
 	  	  }
 	  	  dir = 0;
 	  #if 0
@@ -592,6 +586,7 @@ void StartDefaultTask(void const * argument)
 	  	  else
 	  		  p = NB_PIXEL - 1;
 		*/
+#if 0
 	  	  int p;
 	  	if (accel[2] >= 0)
 	  		  		  p = NB_PIXEL - 1 - ((accel[2] -10000) * NB_PIXEL / 8000);
@@ -603,13 +598,28 @@ void StartDefaultTask(void const * argument)
 	  		  p = 0;
 	  	  for (int i = 0; i <= p; i++)
 	  		  WS2812BSPI_encode_pixel_index (accel[0] == 0 ? 0 : 64,accel[0] == 0 ? 64 : 0,0, i);
+#endif
+	  	if (accel[2] > 0)
+	  	{
+	  	  for (int i = 0; i < NB_PIXEL; i++)
+	  		  	  {
+	  		  	  		  WS2812BSPI_encode_pixel_index(32, 0, 0 , i);
+	  		  	  }
+	  	}
+	  	else
+	  	{
+	  		for (int i = 0; i < NB_PIXEL; i++)
+	  			  		  	  {
+	  			  		  	  		  WS2812BSPI_encode_pixel_index(0, 0, 32 , i);
+	  			  		  	  }
+	  	}
 #if 0
 	#ifdef _DEBUG
 	  	  printf ("%d\n", p);
 	#endif
 #endif
 	  	WS2812BSPI_SendData();
-	  osDelay(40);
+	  osDelay(5);
   }
   /* USER CODE END 5 */ 
 }
